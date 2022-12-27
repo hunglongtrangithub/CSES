@@ -9,6 +9,7 @@ vector<int> information; // stores the actual array with our data in
 
 vector<int> results;
 
+//make a segment tree, time complexity is O(nlogn)
 struct node {
 	// left child manages data from left to midpoint
 	// right child manages data from midpoint+1 to right
@@ -30,8 +31,6 @@ struct node {
 	// this function deletes index'th element (0-INDEXED) in the subtree and also removes
 	// one from the count
 	void del(int index) {
-		// Uncomment the following line to see how it traverses the segment tree
-		// cout << "left: " << left << " right: " << right << " count: " << count << " ind: " << index << endl;
 		if (count < index) {
 			throw std::runtime_error("Element doesn't exist");
 		} else {
@@ -47,15 +46,14 @@ struct node {
 	}
 };
 
-
 int main() {
 	int n, k;
 	cin >> n >> k;
 	information.resize(n);
 	for (int i = 0; i < n; i++) 
         information[i] = i + 1;
-    int p = k % n;
 	node root(0, n - 1, nullptr);
+	int p = k % n; //When k is larger than n, skipping k children is the same as skipping k%n children
 	while (n > 0) {
 		root.del(p);
         n--;
