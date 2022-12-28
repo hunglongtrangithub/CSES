@@ -14,7 +14,7 @@ int main() {
     }
     sort(v.begin(), v.end());
     if (n % 2 == 1) {
-        ll median = (n  - 1) / 2;
+        ll median = (n - 1) / 2;
         for (ll i = 0; i < median; i++) 
             ans += v[i + median + 1] - v[i];
         cout << ans << endl;

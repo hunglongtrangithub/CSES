@@ -13,9 +13,9 @@ int main() {
         cin >> a >> b;
         s.insert(make_pair(b, a));
     }
-    ll endTime = INT8_MIN, count = 0;
+    ll endTime = INT32_MIN, count = 0;
     for (set< pair<ll, ll> >::iterator it = s.begin(); it != s.end(); it++) {
-        if ((*it).second >= endTime) {
+        if (it->second >= endTime) {
             count++;
             endTime = (*it).first;
         }

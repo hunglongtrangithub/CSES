@@ -11,7 +11,7 @@ int main() {
     for (ll i = 0; i < n; i++) {
         cin >> vec[i];
     }
-    ll localMax = -1, globalMax = INT64_MIN;
+    ll localMax = -1, globalMax = INT32_MIN;
     for (ll i = 0; i < n; i++) {
         localMax = max(vec[i], vec[i] + localMax);
         globalMax = max(localMax, globalMax); 
