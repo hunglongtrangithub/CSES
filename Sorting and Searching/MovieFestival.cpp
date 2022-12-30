@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    set< pair<ll, ll> > s;
+    set<pair<ll, ll> > s;
     while (n--) {
         ll a, b;
         cin >> a >> b;

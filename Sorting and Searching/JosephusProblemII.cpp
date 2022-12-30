@@ -3,13 +3,11 @@
 #include <algorithm>
 using namespace std;
 
-struct node;
-
 vector<int> information; // stores the actual array with our data in
 
 vector<int> results;
 
-//make a segment tree, time complexity is O(nlogn)
+//make a segment tree that contains numbers from 1 to n
 struct node {
 	// left child manages data from left to midpoint
 	// right child manages data from midpoint+1 to right
@@ -23,20 +21,21 @@ struct node {
 			left_child = new node(left, midpoint, this);
 			right_child = new node(midpoint+1, right, this);
 			count = left_child->count + right_child->count;
-		} else {
+		} else { //this is a leaf node
 			count = 1;
 		}
 	}
 
-	// this function deletes index'th element (0-INDEXED) in the subtree and also removes
-	// one from the count
+	// this function "deletes" index'th element (0-INDEXED) in the subtree 
+	// by deleting 1 from the count of all nodes in the path
+	// and returns the value of the found element
 	void del(int index) {
 		if (count < index) {
-			throw std::runtime_error("Element doesn't exist");
+			return; // when the index is out of range
 		} else {
 			count--;
 			if (left == right) {
-				results.push_back(information[left]);
+				results.push_back(information[left]); // this is the element we want to save in the result
 			} else if (left_child->count > index) {
 				left_child->del(index);
 			} else {

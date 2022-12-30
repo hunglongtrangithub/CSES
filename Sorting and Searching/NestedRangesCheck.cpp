@@ -5,12 +5,12 @@
 using namespace std;
 #define ll long long
 
-bool compare(pair<pair<ll, ll>, ll> &a, pair<pair<ll, ll>, ll> &b) {
+//define a custom function to compare in the sort() function
+bool compare(const pair<pair<ll, ll>, ll> &a, const pair<pair<ll, ll>, ll> &b) {
     if (a.first.first == b.first.first) 
-        return a.first.second > b.first.second;
-    return a.first.first < b.first.first;
-}
-
+        return a.first.second > b.first.second; //sort by right bound in descending order if left bounds are equal
+    return a.first.first < b.first.first; //sort by left bound in ascending order
+} 
 int main() {
     ll n, left, right;
     cin >> n;
