@@ -17,7 +17,7 @@ int main() {
     for (set< pair<ll, ll> >::iterator it = s.begin(); it != s.end(); it++) {
         if (it->second >= endTime) {
             count++;
-            endTime = (*it).first;
+            endTime = it->first;
         }
     }
     cout << count;

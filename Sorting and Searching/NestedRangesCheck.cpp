@@ -8,13 +8,14 @@ using namespace std;
 //define a custom function to compare in the sort() function
 bool compare(const pair<pair<ll, ll>, ll> &a, const pair<pair<ll, ll>, ll> &b) {
     if (a.first.first == b.first.first) 
-        return a.first.second > b.first.second; //sort by right bound in descending order if left bounds are equal
+        //sort by right bound in descending order if left bounds are equal
+        return a.first.second > b.first.second; 
     return a.first.first < b.first.first; //sort by left bound in ascending order
 } 
 int main() {
     ll n, left, right;
     cin >> n;
-    vector< pair<pair<ll, ll>, ll> > ranges(n);
+    vector<pair<pair<ll, ll>, ll> > ranges(n);
     vector<ll> contains(n), contained(n);
     for (int i = 0; i < n; i++) {
         cin >> left >> right;
