@@ -1,27 +1,32 @@
 #include <iostream>
 #include <vector>
-using namespace std;
+#include <utility>
 #define ll long long 
-int q;
-ll k;
+using namespace std;
+
 string digit;
-vector< vector<ll> > pivot(19,vector<ll>(2,1));
+vector<pair<ll, ll> > pivot(19, make_pair(1, 1)); // pivot[i] = (sum of digits in numbers with i digits, 10^i)
 int main() {
-    for (int n=1; n<19; n++) {
-        pivot[n][0]=pivot[n-1][0]+9*pivot[n-1][1]*n;
-        pivot[n][1]=pivot[n-1][1]*10;
+    // precompute the pivots
+    for (int n = 1; n < 19; n++) {
+        pivot[n].first = pivot[n - 1].first + 9 * pivot[n - 1].second * n;
+        pivot[n].second = pivot[n - 1].second * 10;
     }
+    ll q;
     cin >> q;
     while (q--) {
+        ll k;
         cin >> k;
-        int i=1;
-        while (!(pivot[i-1][0]<=k&&k<pivot[i][0])) i++;
-        k=k-pivot[i-1][0]+1;
-        ll num=pivot[i-1][1]+k/i;
-        if (k%i) {
-            digit=to_string(num)[k%i-1];
+        int i = 1;
+        // find the pivots that k is in between
+         while (pivot[i - 1].first > k || k >= pivot[i].first) 
+            i++;
+        k = k - pivot[i-1].first + 1;
+        ll num = pivot[i-1].second + k / i;
+        if (k % i) {
+            digit = to_string(num)[k % i - 1];
         } else {
-            digit=to_string(num-1)[to_string(num-1).size()-1];
+            digit = to_string(num - 1)[to_string(num - 1).size() - 1];
         }
         cout << digit << endl;
     }
