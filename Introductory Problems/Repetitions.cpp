@@ -6,13 +6,13 @@ int main() {
     cin >> s;
     ll ans = 1, count = 0; // count is the current number of consecutive characters
     char l = 'A';
-    for (char d : s) {
-        if (d == l) {
+    for (int i = 0; i < int(s.size()); i++) {
+        if (s[i] == l) {
             count++;
             ans = max(ans, count);
         } else {
             count = 1;
-            l = d;
+            l = s[i];
         }
     }
     cout << ans;

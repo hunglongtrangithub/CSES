@@ -15,7 +15,7 @@ int main() {
     while (left < right) {
         ll mid = (left + right) / 2;
         ll max_product = 0; // max number of items produced in time mid
-        for (ll i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             max_product += min(mid / machines[i], (ll)1e9);
         }
         if (max_product >= t) {

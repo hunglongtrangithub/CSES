@@ -4,7 +4,6 @@
 using namespace std;
 
 vector<int> information; // stores the actual array with our data in
-
 vector<int> results;
 
 //make a segment tree that contains numbers from 1 to n
@@ -52,7 +51,7 @@ int main() {
 	for (int i = 0; i < n; i++) 
         information[i] = i + 1;
 	node root(0, n - 1, nullptr);
-	int p = k % n; //When k is larger than n, skipping k children is the same as skipping k%n children
+	int p = k % n; //When k is larger than n, skipping k children is the same as skipping k % n children
 	while (n > 0) {
 		root.del(p);
         n--;

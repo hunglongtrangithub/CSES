@@ -12,9 +12,11 @@ int main() {
     while (n--) {
         int a, b;
         cin >> a >> b;
+        // put the arrival and leaving time of each customer on a timeline
         s.insert(make_pair(a, 1));
         s.insert(make_pair(b, -1));
     }
+    // sweep line algorithm: we check the number of customers at each time when a customer leaves or arrives
     for (set<pair<ll, ll> >::iterator it = s.begin(); it != s.end(); it++) {
         num += it->second;
         if (best < num) 

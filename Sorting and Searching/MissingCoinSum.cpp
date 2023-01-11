@@ -1,7 +1,6 @@
 #include <iostream>
 #include <set>
 #define ll long long
-
 using namespace std;
 
 int main() {
@@ -12,7 +11,7 @@ int main() {
         cin >> x;
         s.insert(x);
     }
-    ll sum = 0;
+    ll sum = 0; // the maximum sum of coins that can be made using a subset of the coins
     for (set<ll>::iterator it = s.begin(); it != s.end(); it++) {
         if (*it > sum + 1) {
             break;

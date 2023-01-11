@@ -9,7 +9,7 @@ int main() {
     vector<int> v(n);
     for (int i = 0; i < n; i++) 
         v[i] = i + 1;
-    int check = 0;
+    int check = 0; // index of the child
     while (check < v.size()) {
         if (check % 2 == 0) 
             v.push_back(v[check]);

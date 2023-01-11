@@ -10,7 +10,7 @@ int main() {
     vector<ll> v(n);
     for (int i = 0; i < n; i++) {
         cin >> x;
-        v[x - 1] = i;
+        v[x - 1] = i; // v[i - 1] = the index of the number i in the given array
     }
     ll ans = 1;
     for (int i = 0; i < n - 1; i++) {

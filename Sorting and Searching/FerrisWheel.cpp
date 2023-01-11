@@ -13,11 +13,12 @@ int main() {
         cin >> v[i];
     }
     sort(v.begin(), v.end());
-    ll i = 0, j = n - 1, ans = 0;
+    ll i = 0, j = n - 1, ans = 0; // ans: number of pairs of children who can ride 1 gondola
     while (i < j) {
         if (v[i] + v[j] > x) 
             j--;
         else {
+            // increase the number of pairs by 1 and find the next pair
             ans++;
             i++;
             j--;

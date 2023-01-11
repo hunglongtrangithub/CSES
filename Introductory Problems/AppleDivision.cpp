@@ -17,7 +17,7 @@ void recur_all_sums(ll index = -1, ll current_sum = 0) {
  
 int main() {
     cin >> n;
-    for (int i=0; i<n; i++) {
+    for (int i = 0; i < n; i++) {
         ll p;
         cin >> p;
         apples.push_back(p);

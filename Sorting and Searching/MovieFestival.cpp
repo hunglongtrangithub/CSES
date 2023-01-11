@@ -11,13 +11,14 @@ int main() {
     while (n--) {
         ll a, b;
         cin >> a >> b;
-        s.insert(make_pair(b, a));
+        s.insert(make_pair(b, a)); // sort by end time
     }
-    ll endTime = INT32_MIN, count = 0;
-    for (set< pair<ll, ll> >::iterator it = s.begin(); it != s.end(); it++) {
-        if (it->second >= endTime) {
+    // greedy algorithm: we want to choose the movie that has the earliest ending time have most options for the next
+    ll endTime = 0, count = 0;
+    for (set<pair<ll, ll> >::iterator time = s.begin(); time != s.end(); time++) {
+        if (time->second >= endTime) {
             count++;
-            endTime = it->first;
+            endTime = time->first;
         }
     }
     cout << count;
