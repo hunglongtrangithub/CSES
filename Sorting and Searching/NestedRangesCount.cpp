@@ -68,8 +68,8 @@ int main() {
 		right_bound[i] = right;
 	}
 	sort(ranges.begin(), ranges.end(), compare);
-	//map the right bounds to the numbers in the node 
-	// by keeping only the unique elements in the right_bound vector and arrange them in ascending order
+	/* map the right bounds to the numbers in the node 
+	by keeping only the unique elements in the right_bound vector and arrange them in ascending order */
 	sort(right_bound.begin(), right_bound.end());
 	vector<ll>::iterator it = unique(right_bound.begin(), right_bound.end());
 	right_bound.erase(it, right_bound.end());
