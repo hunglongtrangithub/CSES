@@ -16,8 +16,9 @@ int main() {
             cout << num << " ";
             num -= 2;
         }
-    } else if (n == 1) 
+    } else if (n == 1) {
         cout << 1;
-    else 
+    } else { 
         cout << "NO SOLUTION";
+    }
 }

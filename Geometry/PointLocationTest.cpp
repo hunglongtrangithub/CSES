@@ -14,11 +14,14 @@ int main() {
         cin >> x3;
         cin >> y3;
         ll check = (x2 - x1) * (y3 - y2) - (x3 - x2) * (y2 - y1); // cross product
-        if (check > 0)
+        if (check > 0) {
             cout << "LEFT" << endl;
-        if (check == 0)
+        }
+        if (check == 0) {
             cout << "TOUCH" << endl;
-        if (check < 0)
+        }
+        if (check < 0) {
             cout << "RIGHT" << endl;
+        }
     }
 }

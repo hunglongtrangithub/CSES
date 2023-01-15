@@ -12,6 +12,7 @@ bool compare(const pair<pair<ll, ll>, ll> &a, const pair<pair<ll, ll>, ll> &b) {
         return a.first.second > b.first.second; 
     return a.first.first < b.first.first; //sort by left bound in ascending order
 } 
+
 int main() {
     ll n, left, right;
     cin >> n;

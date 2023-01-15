@@ -13,18 +13,20 @@ int main() {
         // fill the a-th row of the array
         for (int b = 0; b < int(pow(2, n - a)); b++) {
             for (int c = 0; c < int(pow(2, a)); c++) {
-                if (b % 4 == 0 || b % 4 == 3) 
+                if (b % 4 == 0 || b % 4 == 3) {
                     arr[a] += '0';
-                else 
-                    arr[a] += '1';
+                } else { 
+                    arr[a] += '1'; 
+                }
             }
         }
     }
     for (int i = 0; i < int(pow(2, n)); i++) {
         string s; 
         // print the ith row of the array
-        for (int j = 0; j < n; j++) 
+        for (int j = 0; j < n; j++) {
             s += arr[j][i];
+        }
         cout << s << endl;
     }
 }

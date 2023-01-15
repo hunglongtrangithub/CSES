@@ -7,10 +7,11 @@ int main() {
     cin >> n;
     for (int i = 0; i < n; i++) {
         cin >> element;
-        if (element < p) 
+        if (element < p) {
             ans += p - element;
-        else 
+        } else { 
             p = element;
+        }
     }
     cout << ans;
 }

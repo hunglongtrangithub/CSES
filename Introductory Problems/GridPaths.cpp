@@ -11,7 +11,7 @@ bool legit(int x, int y) {
     return 0 <= x && x < 7 && 0 <= y && y < 7 && !visited[x][y];
 }
 
-// x and y are the current coordinates, a is the index of the current character in s
+// Depth first search. x and y are the current coordinates, a is the index of the current character in s
 void dfs(int x, int y, int a = 0) {
     if (x == 0 && y == 6) {
         if (a == 48) {
@@ -49,6 +49,7 @@ void dfs(int x, int y, int a = 0) {
     }
     visited[x][y] = 0;
 }
+
 int main() {
     cin >> s;
     dfs(0, 0);

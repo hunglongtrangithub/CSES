@@ -6,13 +6,15 @@ using namespace std;
 ll min_diff = INT32_MAX, n;
 vector<ll> apples;
 ll total_apple_weight;
+
 /* iterate through all possible combinations of apples (in the order from small index to large index)
 by creating an iterator starting at every index (larger than the current index)
 and adding the weight of the apple at that index to the current sum */
 void recur_all_sums(ll index = -1, ll current_sum = 0) {
     min_diff = min(min_diff, abs(total_apple_weight - current_sum * 2));
-    for (int i = index + 1; i < n; i++) 
+    for (int i = index + 1; i < n; i++) {
         recur_all_sums(i, current_sum + apples[i]); 
+    }
 }
  
 int main() {

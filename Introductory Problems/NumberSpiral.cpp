@@ -10,7 +10,10 @@ int main() {
         cin >> y >> x;
         ll k = max(x, y);
         ll pivot = k * k - k + 1;
-        if (k % 2 == 0) cout << pivot - x + y << endl;
-        else cout << pivot + x - y << endl;
+        if (k % 2 == 0) {
+            cout << pivot - x + y << endl;
+        } else {
+            cout << pivot + x - y << endl;
+        }
     }
 }
