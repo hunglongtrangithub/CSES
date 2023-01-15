@@ -5,7 +5,7 @@
 using namespace std;
  
 int main() {
-    int n;
+    ll n;
     cin >> n;
     set<pair<ll, ll> > s;
     while (n--) {

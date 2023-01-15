@@ -1,10 +1,11 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#define ll long long
 using namespace std;
  
 int main() {
-    int n, x, a;
+    ll n, x, a;
     cin >> n >> x;
     vector<int> s(n), arr(n);
     for (int i = 0; i < n; i++) {
@@ -13,7 +14,7 @@ int main() {
         arr[i] = a;
     }
     sort(s.begin(), s.end());
-    int i = 0, j = n - 1; // two pointers
+    ll i = 0, j = n - 1; // two pointers
     bool flag = true; // flag to check if there are two numbers that sum up to x
     while (i < j) {
         if (s[i] + s[j] > x) {

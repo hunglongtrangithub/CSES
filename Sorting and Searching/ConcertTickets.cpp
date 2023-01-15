@@ -1,18 +1,19 @@
 #include <iostream>
 #include <set>
+#define ll long long
 using namespace std;
 
 int main() {
-    int n, m;
+    ll n, m;
     cin >> n >> m;
     multiset<int> s;
     for (int i = 0; i < n; i++) {
-        int h;
+        ll h;
         cin >> h;
         s.insert(h);
     }
     for (int i = 0; i < m; i++) {
-        int t;
+        ll t;
         cin >> t;
         multiset<int>::iterator it = s.upper_bound(t);
         if (it == s.begin()) 

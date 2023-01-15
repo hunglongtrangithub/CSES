@@ -4,12 +4,12 @@
 using namespace std;
  
 int main() {
-    int n;
+    ll n;
     cin >> n;
-    vector<int> v(n);
+    vector<ll> v(n);
     for (int i = 0; i < n; i++) 
         v[i] = i + 1;
-    int check = 0; // index of the child
+    ll check = 0; // index of the child
     while (check < v.size()) {
         if (check % 2 == 0) 
             v.push_back(v[check]);
