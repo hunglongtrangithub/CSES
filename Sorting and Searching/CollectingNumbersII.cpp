@@ -4,12 +4,15 @@
 using namespace std;
  
 int check(vector<ll> &v, int c, int d) {
-    if (c - d == 1) 
+    if (c - d == 1) {
         return (v[c - 2] > v[c - 1]) + (v[c - 1] > v[c]) + (v[c] > v[c + 1]);
-    if (d - c == 1)
+    }
+    if (d - c == 1) {
         return (v[d - 2] > v[d - 1]) + (v[d - 1] > v[d]) + (v[d] > v[d + 1]);
-    if (c - d > 1 || c - d < -1) 
+    }
+    if (c - d > 1 || c - d < -1) {
         return (v[c - 1] > v[c]) + (v[c] > v[c + 1]) + (v[d - 1] > v[d]) + (v[d] > v[d + 1]);
+    }
 }
  
 int main() {
@@ -26,8 +29,9 @@ int main() {
     // compute the number of rounds for the initial array
     ll ans = 0;
     for (int i = 0; i < n; i++) {
-        if (v2[i] > v2[i + 1])
+        if (v2[i] > v2[i + 1]) {
             ans++;
+        }
     }
     while (m--) {
         ll a, b;

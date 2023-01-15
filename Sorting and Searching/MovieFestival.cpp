@@ -15,10 +15,10 @@ int main() {
     }
     // greedy algorithm: we want to choose the movie that has the earliest ending time have most options for the next
     ll endTime = 0, count = 0;
-    for (set<pair<ll, ll> >::iterator time = s.begin(); time != s.end(); time++) {
-        if (time->second >= endTime) {
+    for (pair<ll, ll> time : s) {
+        if (time.second >= endTime) {
             count++;
-            endTime = time->first;
+            endTime = time.first;
         }
     }
     cout << count;

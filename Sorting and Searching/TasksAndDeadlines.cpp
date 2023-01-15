@@ -19,9 +19,9 @@ int main() {
     by the duration of the tasks and add up the reward in that order. */
     sort(tasks.begin(), tasks.end());
     ll finish_time = 0, reward = 0;
-    for (int i = 0; i < n; i++) {
-        finish_time += tasks[i].first; 
-        reward += tasks[i].second - finish_time;
+    for (pair<ll, ll> i : tasks) {
+        finish_time += i.first; 
+        reward += i.second - finish_time;
     }
     cout << reward;
 }

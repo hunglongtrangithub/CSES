@@ -18,20 +18,20 @@ int main() {
         days[i] = make_pair(make_pair(a, b), i);
     }
     sort(days.begin(), days.end());
-    set<pair<ll, ll> > right_bound; //keeping the departure day and room number for each current room
-    right_bound.insert(make_pair(INT32_MAX, 0)); // first: departure day, second: room number
-    for (int i = 0; i < n; i++) {
-        if (days[i].first.first <= right_bound.begin()->first) {
+    set<pair<ll, ll> > right_bound{make_pair(INT32_MAX, 0)}; //keeping the departure day and room number for each current room
+    for (pair<pair<ll, ll>, ll> i : days) {
+        if (i.first.first <= right_bound.begin()->first) {
             max_room_num++;
-            rooms[days[i].second] = max_room_num;
-            right_bound.insert(make_pair(days[i].first.second, max_room_num));
+            rooms[i.second] = max_room_num;
+            right_bound.insert(make_pair(i.first.second, max_room_num));
         } else {
-            rooms[days[i].second] = right_bound.begin()->second;
+            rooms[i.second] = right_bound.begin()->second;
             right_bound.erase(right_bound.begin());
-            right_bound.insert(make_pair(days[i].first.second, rooms[days[i].second]));
+            right_bound.insert(make_pair(i.first.second, rooms[i.second]));
         }
     }
     cout << max_room_num << endl;
-    for (ll i = 0; i < n; i++)
-        cout << rooms[i] << " ";
+    for (ll i : rooms) {
+        cout << i << " ";
+    }
 }

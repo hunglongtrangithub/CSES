@@ -7,9 +7,10 @@ using namespace std;
 
 //define a custom function to compare in the sort() function
 bool compare(const pair<pair<ll, ll>, ll> &a, const pair<pair<ll, ll>, ll> &b) {
-    if (a.first.first == b.first.first) 
+    if (a.first.first == b.first.first) {
         //sort by right bound in descending order if left bounds are equal
         return a.first.second > b.first.second; 
+    }
     return a.first.first < b.first.first; //sort by left bound in ascending order
 } 
 
@@ -35,7 +36,7 @@ int main() {
     }
     //contains
     ll right_bound_min = INT32_MAX;
-    for (int i = n-1; i >= 0; i--) {
+    for (int i = n - 1; i >= 0; i--) {
         if (ranges[i].first.second < right_bound_min) {
             contains[ranges[i].second] = 0;
             right_bound_min = ranges[i].first.second;
@@ -43,9 +44,11 @@ int main() {
             contains[ranges[i].second] = 1;
         }
     }
-    for (int i = 0; i < n; i++) 
-        cout << contains[i] << " ";
+    for (ll i : contains) {
+        cout << i << " ";
+    }
     cout << endl;
-    for (int i = 0; i < n; i++) 
-        cout << contained[i] << " ";
+    for (ll i : contained) {
+        cout << i << " ";
+    }
 }

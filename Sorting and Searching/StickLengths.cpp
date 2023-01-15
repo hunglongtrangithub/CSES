@@ -16,12 +16,14 @@ int main() {
     // the mininum total cost is when all the sticks are the same length as the median stick
     if (n % 2 == 1) {
         ll median = (n - 1) / 2;
-        for (int i = 0; i < median; i++) 
-            ans += v[i + median + 1] - v[i]; 
+        for (int i = 0; i < median; i++) {
+            ans += v[i + median + 1] - v[i];
+        } 
         cout << ans << endl;
     } else {
-        for (int i = 0; i < n / 2; i++)
+        for (int i = 0; i < n / 2; i++) {
             ans += v[i + n / 2] - v[i];
+        }
         cout << ans << endl;
     }
 }

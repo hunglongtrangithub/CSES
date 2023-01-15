@@ -8,8 +8,9 @@ int main() {
     ll n;
     cin >> n;
     vector<ll> v(n);
-    for (int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++) {
         cin >> v[i];
+    }
     set<ll> s;
     ll i = 0, j = 0, ans = 0;
     while (i < n && j < n) {
@@ -17,8 +18,9 @@ int main() {
             s.insert(v[j]);
             j++;
         }
-        if (j - i > ans)
+        if (j - i > ans) {
             ans = j - i;
+        }
         while (i < n && v[i] != v[j]) {
             s.erase(v[i]);
             i++;

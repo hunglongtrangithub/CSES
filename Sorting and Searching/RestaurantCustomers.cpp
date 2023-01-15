@@ -17,8 +17,8 @@ int main() {
         s.insert(make_pair(b, -1));
     }
     // sweep line algorithm: we check the number of customers at each time when a customer leaves or arrives
-    for (set<pair<ll, ll> >::iterator it = s.begin(); it != s.end(); it++) {
-        num += it->second;
+    for (pair<ll, ll> time : s) {
+        num += time.second;
         if (best < num) 
             best = num; 
     }

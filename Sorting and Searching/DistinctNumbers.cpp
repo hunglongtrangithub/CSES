@@ -8,7 +8,7 @@ int main() {
     cin >> n;
     ll x;
     set<ll> s;
-    for (int i = 0; i < n; i++) {
+    while (n--) {
         cin >> x;
         s.insert(x);
     }

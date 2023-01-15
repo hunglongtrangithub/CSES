@@ -12,8 +12,8 @@ int main() {
         cin >> arr[i];
     }
     ll localMax = -1, globalMax = INT32_MIN;
-    for (int i = 0; i < n; i++) {
-        localMax = max(arr[i], arr[i] + localMax);
+    for (ll num : arr) {
+        localMax = max(num, num + localMax);
         globalMax = max(localMax, globalMax); 
     }
     cout << globalMax << endl;

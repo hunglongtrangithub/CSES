@@ -22,10 +22,10 @@ int main() {
         when it is already >= t. */
         for (int i = 0; i < n; i++) {
             max_product += mid / machines[i];
-            if (max_product >= t) 
+            if (max_product >= t) {
                 break; // no need to continue if max_product is already >= t
+            }
         }
-
         if (max_product >= t) {
             right = mid;
         } else {

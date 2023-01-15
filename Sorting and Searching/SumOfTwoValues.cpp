@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     ll n, x, a;
     cin >> n >> x;
-    vector<int> s(n), arr(n);
+    vector<int> s(n), arr(n); // s is sorted, arr is not
     for (int i = 0; i < n; i++) {
         cin >> a;
         s[i] = a;

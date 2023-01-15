@@ -41,6 +41,7 @@ int main() {
 		else 
 			output[i - 1] = output[i];
 	}
-	for (int i = 0; i < n; i++) 
-		cout << output[i] << ' ';
+	for (ll i : output) {
+		cout << i << ' ';
+	}
 }

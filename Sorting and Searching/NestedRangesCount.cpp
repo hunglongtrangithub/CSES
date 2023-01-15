@@ -19,8 +19,9 @@ struct node {
 			left_child = new node(left, midpoint, this);
 			right_child = new node(midpoint+1, right, this);
 			freq = left_child->freq + right_child->freq;
-		} else 
+		} else {
 			freq = 0;
+		}
 	}
 	//this function updates the frequency of the given value in the tree
 	void update(int value) {
@@ -30,10 +31,11 @@ struct node {
 	    if (left == right) {
 	        freq++;
 	    } else {
-			if (value <= midpoint) 
+			if (value <= midpoint) {
 	        	left_child->update(value);
-	    	else 
+			} else {
 				right_child->update(value);
+			}
 	    	freq = left_child->freq + right_child->freq;
 		}
 	}
@@ -52,8 +54,9 @@ struct node {
  
 //define a custom function to compare in the sort() function
 bool compare(const pair<pair<ll, ll>, ll> &a, const pair<pair<ll, ll>, ll> &b) {
-    if (a.first.first == b.first.first) 
+    if (a.first.first == b.first.first) {
         return a.first.second > b.first.second;
+	}
     return a.first.first < b.first.first;
 }
  
@@ -61,7 +64,7 @@ int main() {
     ll n, left, right;
 	cin >> n;
 	vector<pair<pair<ll, ll>, ll> > ranges(n); 
-    vector<ll> contains(n), contained(n), right_bound(n);
+    vector<ll> contains(n), contained(n), right_bound(n); // right_bound keeps the right bounds of the ranges
 	for (int i = 0; i < n; i++) {
 		cin >> left >> right;
 		ranges[i] = make_pair(make_pair(left, right), i);
@@ -89,9 +92,11 @@ int main() {
 		contains[ranges[i].second] = root_contains.sum(0, index);
 		root_contains.update(index);
 	}
-	for (int i = 0; i < n; i++) 
-		cout << contains[i] << " ";
+	for (ll i : contains) {
+		cout << i << " ";
+	}
 	cout << endl;
-	for (int i = 0; i < n; i++) 
-		cout << contained[i] << " ";
+	for (ll i : contained) {
+		cout << i << " ";
+	}
 }
