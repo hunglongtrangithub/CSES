@@ -1,48 +1,60 @@
 #include <iostream>
 #include <vector>
-#include <set>
 #define ll long long
 using namespace std;
-string check(vector<ll> X, vector<ll> Y, ll x, ll y) {
-    int n = X.size();
-    int count = 0;
-    for (int i = 0; i < n; i++) {
-        int j = (i + 1) % n;
-        ll X1 = X[i], Y1 = Y[i], X2 = X[j], Y2 = Y[j];
-        if (Y1 < Y2) {
-            swap(X1, X2);
-            swap(Y1, Y2);
+
+struct point {
+    ll x, y;
+};
+
+int orientation(point p1, point p2, point p3) { 
+    ll val = (p2.y - p1.y) * (p3.x - p2.x) - (p2.x - p1.x) * (p3.y - p2.y); // cross product
+    if (val == 0) {
+        return 0; // colinear
+    }
+    return (val > 0) ? 1 : -1; // whether point (2) to the left or to the right of the line made by (1) and (3)
+}
+
+// check if point (2) lies on the line segment made by (1) and (3)
+bool onSegment(point p1, point p2, point p3) {
+    if (orientation(p1, p2, p3) == 0) {
+        return p2.x <= max(p1.x, p3.x) && p2.x >= min(p1.x, p3.x) && p2.y <= max(p1.y, p3.y) && p2.y >= min(p1.y, p3.y);
+    }
+    return false;
+}
+
+string InsidePolygon(vector<point> P, int N, point p) {
+    int counter = 0;
+    for (int i = 0; i < N; i++) {
+        point p1 = P[i];
+        point p2 = P[(i + 1) % N];
+        if (onSegment(p1, p, p2)) {
+            return "BOUNDARY";
         }
-        if (Y1 == Y2) {
-            if (min(X1, X2) < x && x < max(X1, X2) && y == Y1) {
-                return "BOUNDARY";
-            }
-        } else if (Y2 <= y && y <= Y1) {
-            if ((x-X1)*(Y2-y) - (X2-x)*(y-Y1) > 0) {
-                count++;
-            } else if ((x-X1)*(Y2-y) - (X2-x)*(y-Y1) == 0) {
-                return "BOUNDARY";
-            }
+        if (p1.x <= p.x && p.x < p2.x && orientation(p1, p, p2) > 0) {
+            counter++;
+        }
+        if (p2.x <= p.x && p.x < p1.x && orientation(p2, p, p1) > 0) {
+            counter++;
         }
     }
-    if (count % 2 == 0) {
+    if (counter % 2 == 0) {
         return "OUTSIDE";
     } else {
         return "INSIDE";
     }
 }
+
 int main() {
-    int n, m;
+    ll n, m;
     cin >> n >> m;
-    vector<ll> X(n), Y(n);
+    vector<point> polygonPoints(n);
     for (int i = 0; i < n; i++) {
-        cin >> X[i] >> Y[i];
-    }
-    vector<ll> x(m), y(m);
-    for (int i = 0; i < m; i++) {
-        cin >> x[i] >> y[i];
+        cin >> polygonPoints[i].x >> polygonPoints[i].y;
     }
     for (int i = 0; i < m; i++) {
-        cout << check(X, Y, x[i], y[i]) << endl;
+        point p;
+        cin >> p.x >> p.y;
+        cout << InsidePolygon(polygonPoints, n, p) << endl;
     }
 }

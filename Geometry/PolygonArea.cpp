@@ -17,5 +17,4 @@ int main() {
     }
     ll ans = (A > 0) ? A : -A;
     cout << ans << endl;
-    return 0;
 }
