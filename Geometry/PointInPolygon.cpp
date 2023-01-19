@@ -8,11 +8,12 @@ struct point {
 };
 
 int orientation(point p1, point p2, point p3) { 
-    ll val = (p2.y - p1.y) * (p3.x - p2.x) - (p2.x - p1.x) * (p3.y - p2.y); // cross product
+    // cross product of vectors (1)(2) and (2)(3)
+    ll val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
     if (val == 0) {
         return 0; // colinear
     }
-    return (val > 0) ? 1 : -1; // whether point (2) to the left or to the right of the line made by (1) and (3)
+    return (val < 0) ? -1 : 1; // whether point (2) is to the left (-1) or to the right (1) of vector (1)(3)
 }
 
 // check if point (2) lies on the line segment made by (1) and (3)
@@ -23,18 +24,29 @@ bool onSegment(point p1, point p2, point p3) {
     return false;
 }
 
+/* Ray casting algorithm: 
+Cast a horizontal "ray" from the point in question to the right, and count 
+the number of times the ray intersects with the edges of the polygon. 
+If the number of intersections is odd, the point is inside the polygon. 
+If the number of intersections is even, the point is outside the polygon. 
+*/
 string InsidePolygon(vector<point> P, int N, point p) {
     int counter = 0;
     for (int i = 0; i < N; i++) {
         point p1 = P[i];
         point p2 = P[(i + 1) % N];
+        // first check if p lies on the line segment made by p1 and p2
         if (onSegment(p1, p, p2)) {
             return "BOUNDARY";
         }
-        if (p1.x <= p.x && p.x < p2.x && orientation(p1, p, p2) > 0) {
+        /* This is when onSegment(p1, p, p2) == false. 
+        If p1.y == p2.y != p.y, ignore and move on the next segment. If p1.y == p2.y == p.y, then either 
+        (1) p.x > min(p1.x, p2.x) or (2) p.x < max(p1.x, p2.x). If (1), ignore and move on. If (2), we also 
+        ignore because the segment does not contribute to the count. Thus, we only consider when p1.y != p2.y. */
+        if (p1.y <= p.y && p.y < p2.y && orientation(p1, p, p2) < 0) {
             counter++;
         }
-        if (p2.x <= p.x && p.x < p1.x && orientation(p2, p, p1) > 0) {
+        if (p2.y <= p.y && p.y < p1.y && orientation(p2, p, p1) < 0) {
             counter++;
         }
     }

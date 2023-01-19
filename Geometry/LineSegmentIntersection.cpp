@@ -7,11 +7,12 @@ struct point {
 };
 
 int orientation(point p1, point p2, point p3) { 
-    ll val = (p2.y - p1.y) * (p3.x - p2.x) - (p2.x - p1.x) * (p3.y - p2.y); // cross product
+    // cross product of vectors (1)(2) and (2)(3)
+    ll val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
     if (val == 0) {
         return 0; // colinear
     }
-    return (val > 0) ? 1 : -1; // whether point (2) to the left or to the right of the line made by (1) and (3)
+    return (val < 0) ? -1 : 1; // whether point (2) to the left (-1) or to the right (1) of vector (1)(3)
 }
 
 // check if point (2) lies on the line segment made by (1) and (3)
