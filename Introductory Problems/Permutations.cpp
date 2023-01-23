@@ -1,9 +1,8 @@
 #include <iostream>
 using namespace std;
-#define ll long long
 
 int main() {
-    ll n, num;
+    long n, num;
     cin >> n;
     if (n > 3) {
         num = n - 1;
@@ -21,4 +20,5 @@ int main() {
     } else { 
         cout << "NO SOLUTION";
     }
+    return 0;
 }

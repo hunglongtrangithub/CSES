@@ -1,8 +1,6 @@
 #include <iostream>
 #include <set>
-#include <vector>
-#include <algorithm>
-#define ll long long
+#include <string>
 using namespace std;
 
 set<string> all_permutations(string s) {
@@ -11,12 +9,12 @@ set<string> all_permutations(string s) {
         ans.insert(s);
         return ans;
     }
-    char letter = s.back(); // last letter of s
-    // iterate through all permutations of s without the last letter
-    for (string str : all_permutations(s.substr(0,s.size() - 1))) {
-        for (int i = 0; i < int(str.size() + 1); i++) {
-            // insert the letter at position i in all of the permutations of str
-            ans.insert(str.substr(0, i) + letter + str.substr(i, str.size()));
+    for (long i = 0; i < long(s.size()); i++) {
+        string temp = s;
+        temp.erase(temp.begin() + i);
+        set<string> temp_ans = all_permutations(temp);
+        for (string str : temp_ans) {
+            ans.insert(s.at(i) + str);
         }
     }
     return ans;
@@ -29,4 +27,5 @@ int main() {
     for (string str : all_permutations(s)) {
         cout << str << endl;
     }
+    return 0;
 }

@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     ll n, p = INT32_MIN, element, ans = 0;
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    for (long i = 0; i < n; i++) {
         cin >> element;
         if (element < p) {
             ans += p - element;
@@ -14,4 +14,5 @@ int main() {
         }
     }
     cout << ans;
+    return 0;
 }

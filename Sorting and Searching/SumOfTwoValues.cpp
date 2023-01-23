@@ -3,35 +3,34 @@
 #include <vector>
 #define ll long long
 using namespace std;
- 
+
 int main() {
-    ll n, x, a;
-    cin >> n >> x;
-    vector<int> s(n), arr(n); // s is sorted, arr is not
-    for (int i = 0; i < n; i++) {
-        cin >> a;
-        s[i] = a;
-        arr[i] = a;
-    }
-    sort(s.begin(), s.end());
-    ll i = 0, j = n - 1; // two pointers
-    bool flag = true; // flag to check if there are two numbers that sum up to x
-    while (i < j) {
-        if (s[i] + s[j] > x) {
-            j--;  
-        } else if (s[i] + s[j] < x) {
-            i++;
-        } else {
-            flag = false;
-            break;
-        }
-    }
-    if (flag)
-        cout << "IMPOSSIBLE" << endl;
-    else {
-        vector<int>::iterator it1 = find(arr.begin(), arr.end(), s[i]);
-        *it1 = 0; // avoid it1 == it2 when the two numbers are the same
-        vector<int>::iterator it2 = find(arr.begin(), arr.end(), s[j]);
-        cout << it1 - arr.begin() + 1 << " " << it2 - arr.begin() + 1; 
-    }    
+	int n, target;
+	cin >> n >> target;
+
+	vector<pair<int, int>> values(n);
+	// append the element and its index
+	for (int i = 0; i < n; i++) {
+		int x;
+		cin >> x;
+		values[i] = {x, i + 1};
+	}
+	
+	sort(values.begin(), values.end());
+	int left = 0;
+	int right = n - 1;
+	while (left < right) {
+		// adjust left and right pointers
+		if (values[left].first + values[right].first > target) {
+			right--;
+		} else if (values[left].first + values[right].first < target) {
+			left++;
+		} else if (values[left].first + values[right].first == target) {
+			cout << values[left].second << " " << values[right].second << endl;
+			return 0;
+		}
+	}
+
+	// print IMPOSSIBLE if we haven't found a pair
+	cout << "IMPOSSIBLE" << endl;
 }
