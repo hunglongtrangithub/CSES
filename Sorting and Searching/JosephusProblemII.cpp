@@ -6,9 +6,10 @@ vector<long> information; // stores the actual array with our data in
 vector<long> results;
 
 //make a segment tree that contains numbers from 1 to n
+// This segment tree will be used to represent the children by their indices in the tree
 struct node {
 	// left child manages data from left to midpoint
-	// right child manages data from midpoint+1 to right
+	// right child manages data from midpoint + 1 to right
 	long left, right, midpoint;
 	node* left_child;
 	node* right_child;
@@ -19,8 +20,8 @@ struct node {
 			left_child = new node(left, midpoint, this);
 			right_child = new node(midpoint + 1, right, this);
 			count = left_child->count + right_child->count;
-		} else { //this is a leaf node
-			count = 1;
+		} else { 
+			count = 1; 
 		}
 	}
 
@@ -55,8 +56,9 @@ int main() {
 	while (n > 0) {
 		root.del(p);
         n--;
-        if (n > 0) 
+        if (n > 0) {
             p = (p + k) % n;
+		}
 	}
 	for (long i : results) {
 		cout << i << " ";

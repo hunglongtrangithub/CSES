@@ -20,13 +20,14 @@ int main() {
     vector<long> contains(n), contained(n);
     for (long i = 0; i < n; i++) {
         cin >> left >> right;
-        ranges[i] = make_pair(make_pair(left, right), i);
+        ranges[i] = {{left, right}, i}; //keep the original index of the range to use it for the output
     }
     sort(ranges.begin(), ranges.end(), compare);
     //contained
     long right_bound_max = 0;
     for (long i = 0; i < n; i++) {
         if (ranges[i].first.second > right_bound_max) {
+            // if the right bound of the current range is greater than the largest right bound of the previous ranges
             contained[ranges[i].second] = 0;
             right_bound_max = ranges[i].first.second;
         } else {
@@ -37,6 +38,7 @@ int main() {
     long right_bound_min = INT32_MAX;
     for (long i = n - 1; i >= 0; i--) {
         if (ranges[i].first.second < right_bound_min) {
+            // if the right bound of the current range is smaller than the smallest right bound of the previous ranges
             contains[ranges[i].second] = 0;
             right_bound_min = ranges[i].first.second;
         } else {
