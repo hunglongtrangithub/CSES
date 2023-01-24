@@ -1,26 +1,27 @@
 #include <iostream>
 #include <set>
 #include <utility>
-#define ll long long
 using namespace std;
  
 int main() {
-    ll n;
+    long n;
     cin >> n;
-    set<pair<ll, ll> > s;
-    int num = 0, best = -1;
-    while (n--) {
-        int a, b;
+    set<pair<long, long>> s;
+    long num = 0, best = -1;
+    for (long i = 0; i < n; i++) {
+        long a, b;
         cin >> a >> b;
         // put the arrival and leaving time of each customer on a timeline
-        s.insert(make_pair(a, 1));
-        s.insert(make_pair(b, -1));
+        s.insert({a, 1});
+        s.insert({b, -1});
     }
     // sweep line algorithm: we check the number of customers at each time when a customer leaves or arrives
-    for (pair<ll, ll> time : s) {
+    for (pair<long, long> time : s) {
         num += time.second;
-        if (best < num) 
+        if (best < num) {
             best = num; 
+        }
     }
-    cout << best << endl; 
+    cout << best;
+    return 0; 
 }

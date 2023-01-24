@@ -1,23 +1,22 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
-#define ll long long
+#include <algorithm>
 using namespace std;
 
 int main() {
-    ll n;
+    long n;
     cin >> n;
-    vector<ll> t(n);
-    for (int i = 0; i < n; i++) {
+    vector<long> t(n);
+    for (long i = 0; i < n; i++) {
         cin >> t[i];
     }
     sort(t.begin(), t.end());
-    ll sum = 0;
-    for (int i = 0; i < n; i++) {
+    long sum = 0;
+    for (long i = 0; i < n; i++) {
         sum += t[i];
     }
     /* Sort the reading time in ascending order. No matter how we arrange the reading time of the books, the total time 
-    cannot be less than the sum of the reading time of all the books. In the case that t[n - 1] < sum / 2, we have the 
+    cannot be less than the sum of the reading time of along the books. In the case that t[n - 1] < sum / 2, we have the 
     following configuration of the reading schedule for Kotivalo and Justiina, where no one has to wait for another:
     1. Kotivalo: t[0], t[1], ..., t[n - 2], t[n - 1]
     2. Justiina: t[n - 1], t[0], t[1], ..., t[n - 2]
@@ -32,13 +31,16 @@ int main() {
     Thus, there is no overlap between the reading time of any books between Kotivalo and Justiina, and the total reading
     time is sum.
 
-    In the case that the reading time of the last book is larger than half the sum of the reading time all the books, we
+    In the case that the reading time of the last book is larger than half the sum of the reading time along the books, we
     let Kotivalo read the last book and Justiina read the rest of the books, and when Kotivalo finishes, Justiina starts
-    reading the last book and Kotivalo starts reading the rest of the books. The total reading time is t[n - 1] * 2.
+    reading the last book and Kotivalo starts reading the rest of the books. The total reading time is t[n - 1] * 2. This
+    is the mininum total reading time, as no matter how we arrange the reading time of the books, the total reading time 
+    cannot be less than t[n - 1] * 2 (because one has to wait for another to finish reading the last book).
 
     In short, if 2 * t[n - 1] < sum, the total reading time is sum. Otherwise, the total reading time is t[n - 1] * 2.
     This means that the total reading time is max(sum, t[n - 1] * 2).
     */
-    ll ans = max(sum, t[n - 1] * 2);
-    cout << ans << endl;
+    long ans = max(sum, t[n - 1] * 2);
+    cout << ans;
+    return 0;
 }

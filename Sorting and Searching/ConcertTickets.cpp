@@ -1,21 +1,20 @@
 #include <iostream>
 #include <set>
-#define ll long long
 using namespace std;
 
 int main() {
-    ll n, m;
+    long n, m;
     cin >> n >> m;
-    multiset<ll> s;
-    for (int i = 0; i < n; i++) {
-        ll h;
+    multiset<long> s;
+    for (long i = 0; i < n; i++) {
+        long h;
         cin >> h;
         s.insert(h);
     }
-    for (int i = 0; i < m; i++) {
-        ll t;
+    for (long i = 0; i < m; i++) {
+        long t;
         cin >> t;
-        multiset<ll>::iterator it = s.upper_bound(t);
+        multiset<long>::iterator it = s.upper_bound(t);
         if (it == s.begin()) {
             cout << -1 << endl;
         }
@@ -25,4 +24,5 @@ int main() {
             s.erase(it);
         }
     }
+    return 0;
 }

@@ -1,16 +1,16 @@
 #include <set>
 #include <iostream>
-#define ll long long
 using namespace std;
 
 int main() {
-    ll n;
+    long n;
     cin >> n;
-    ll x;
-    set<ll> s;
-    while (n--) {
+    long x;
+    set<long> s;
+    for (long i = 0; i < n; i++) {
         cin >> x;
         s.insert(x);
     }
-    cout << s.size() << endl;
+    cout << s.size();
+    return 0;
 }

@@ -3,10 +3,9 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-#define ll long long
 
 //define a custom function to compare in the sort() function
-bool compare(const pair<pair<ll, ll>, ll> &a, const pair<pair<ll, ll>, ll> &b) {
+bool compare(const pair<pair<long, long>, long> &a, const pair<pair<long, long>, long> &b) {
     if (a.first.first == b.first.first) {
         //sort by right bound in descending order if left bounds are equal
         return a.first.second > b.first.second; 
@@ -15,18 +14,18 @@ bool compare(const pair<pair<ll, ll>, ll> &a, const pair<pair<ll, ll>, ll> &b) {
 } 
 
 int main() {
-    ll n, left, right;
+    long n, left, right;
     cin >> n;
-    vector<pair<pair<ll, ll>, ll> > ranges(n);
-    vector<ll> contains(n), contained(n);
-    for (int i = 0; i < n; i++) {
+    vector<pair<pair<long, long>, long>> ranges(n);
+    vector<long> contains(n), contained(n);
+    for (long i = 0; i < n; i++) {
         cin >> left >> right;
         ranges[i] = make_pair(make_pair(left, right), i);
     }
     sort(ranges.begin(), ranges.end(), compare);
     //contained
-    ll right_bound_max = 0;
-    for (int i = 0; i < n; i++) {
+    long right_bound_max = 0;
+    for (long i = 0; i < n; i++) {
         if (ranges[i].first.second > right_bound_max) {
             contained[ranges[i].second] = 0;
             right_bound_max = ranges[i].first.second;
@@ -35,8 +34,8 @@ int main() {
         }
     }
     //contains
-    ll right_bound_min = INT32_MAX;
-    for (int i = n - 1; i >= 0; i--) {
+    long right_bound_min = INT32_MAX;
+    for (long i = n - 1; i >= 0; i--) {
         if (ranges[i].first.second < right_bound_min) {
             contains[ranges[i].second] = 0;
             right_bound_min = ranges[i].first.second;
@@ -44,11 +43,12 @@ int main() {
             contains[ranges[i].second] = 1;
         }
     }
-    for (ll i : contains) {
+    for (long i : contains) {
         cout << i << " ";
     }
     cout << endl;
-    for (ll i : contained) {
+    for (long i : contained) {
         cout << i << " ";
     }
+    return 0;
 }

@@ -1,36 +1,30 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#define ll long long
+#include <utility>
 using namespace std;
 
 int main() {
-	int n, target;
-	cin >> n >> target;
-
-	vector<pair<int, int>> values(n);
-	// append the element and its index
-	for (int i = 0; i < n; i++) {
-		int x;
-		cin >> x;
-		values[i] = {x, i + 1};
+	long n, x;
+	cin >> n >> x;
+	vector<pair<long, long>> a(n);
+	for (long i = 0; i < n; i++) {
+		cin >> a[i].first;
+		a[i].second = i + 1;
 	}
-	
-	sort(values.begin(), values.end());
-	int left = 0;
-	int right = n - 1;
+	sort(a.begin(), a.end());
+	long left = 0;
+	long right = n - 1;
 	while (left < right) {
-		// adjust left and right pointers
-		if (values[left].first + values[right].first > target) {
+		if (a[left].first + a[right].first > x) {
 			right--;
-		} else if (values[left].first + values[right].first < target) {
+		} else if (a[left].first + a[right].first < x) {
 			left++;
-		} else if (values[left].first + values[right].first == target) {
-			cout << values[left].second << " " << values[right].second << endl;
+		} else if (a[left].first + a[right].first == x) {
+			cout << a[left].second << " " << a[right].second;
 			return 0;
 		}
 	}
-
-	// print IMPOSSIBLE if we haven't found a pair
-	cout << "IMPOSSIBLE" << endl;
+	cout << "IMPOSSIBLE";
+	return 0;
 }

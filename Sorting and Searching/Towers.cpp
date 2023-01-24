@@ -1,24 +1,24 @@
 #include <iostream>
 #include <set>
 #include <vector>
-#define ll long long
 using namespace std;
 
 int main() {
-    ll n;
+    long n;
     cin >> n;
-    vector<ll> v(n);
+    vector<long> v(n);
     for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
-    multiset<ll> check;
+    multiset<long> check;
     check.insert(v[0]);
-    for (ll i : v) {
-        multiset<ll>::iterator it = check.upper_bound(i);
+    for (long i = 1; i < n; i++) {
+        multiset<long>::iterator it = check.upper_bound(v[i]);
         if (it != check.end()) {
             check.erase(it);
         }
-        check.insert(i);
+        check.insert(v[i]);
     }
-    cout << check.size() << endl;
+    cout << check.size();
+    return 0;
 }

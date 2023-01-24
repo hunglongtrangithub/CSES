@@ -1,20 +1,19 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#define ll long long
 using namespace std;
  
 int main() {
-    ll n;
+    long n;
     cin >> n;
-    vector<ll> arr(n);
-    for (ll i = 0; i < n; i++) {
+    vector<long> arr(n);
+    for (long i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    ll localMax = -1, globalMax = INT32_MIN;
-    for (ll num : arr) {
+    long localMax = -1, globalMax = INT32_MIN;
+    for (long num : arr) {
         localMax = max(num, num + localMax);
         globalMax = max(localMax, globalMax); 
     }
-    cout << globalMax << endl;
+    cout << globalMax;
+    return 0;
 }
