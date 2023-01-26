@@ -62,7 +62,7 @@ int main() {
         cin >> array[i];
         input[i] = {array[i], i + 1};
     }
-    // map the numbers in the array to the indices in the tree
+    // map the numbers in the array to the indices in the tree by sorting the numbers 
     sort(array.begin(), array.end());
     node root(0, n - 1, nullptr);
     for (long i = 0; i < n; i++) {

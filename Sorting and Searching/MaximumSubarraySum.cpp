@@ -9,6 +9,7 @@ int main() {
     for (long i = 0; i < n; i++) {
         cin >> arr[i];
     }
+    // Kadane's algorithm
     long localMax = -1, globalMax = INT32_MIN;
     for (long num : arr) {
         localMax = max(num, num + localMax);

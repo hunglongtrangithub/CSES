@@ -15,7 +15,7 @@ int main() {
         s.insert({a, 1});
         s.insert({b, -1});
     }
-    // sweep line algorithm: we check the number of customers at each time when a customer leaves or arrives
+    // we check the number of customers at each time when whether a customer leaves or arrives
     for (pair<long, long> time : s) {
         num += time.second;
         if (best < num) {

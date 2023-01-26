@@ -12,7 +12,7 @@ int main() {
         cin >> a >> b;
         s.insert({b, a}); // sort by end time
     }
-    // greedy algorithm: we want to choose the movie that has the earliest ending time have most options for the next
+    // we want to choose the movie that has the earliest ending time to have the most options for the next
     long endTime = 0, count = 0;
     for (pair<long, long> time : s) {
         if (time.second >= endTime) {
