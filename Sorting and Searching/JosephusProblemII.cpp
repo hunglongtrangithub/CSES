@@ -5,7 +5,7 @@ using namespace std;
 vector<long> information; // stores the actual array with our data in
 vector<long> results;
 
-//make a segment tree that contains numbers from 1 to n
+//make a segment tree that contains numbers from 1 to n in the leaf nodes
 // This segment tree will be used to represent the children by their indices in the tree
 struct node {
 	// left child manages data from left to midpoint
@@ -21,7 +21,7 @@ struct node {
 			right_child = new node(midpoint + 1, right, this);
 			count = left_child->count + right_child->count;
 		} else { 
-			count = 1; 
+			count = 1; // initialize to 1
 		}
 	}
 

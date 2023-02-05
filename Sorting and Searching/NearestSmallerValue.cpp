@@ -1,11 +1,10 @@
 #include <iostream>
-#include <set>
 #include <vector>
 #include <utility>
 #include <algorithm>
 using namespace std;
 
-//make a segment tree that contain the maximum value of the numbers in the subtree
+// make a segment tree that contain the maximum value of the numbers in the subtree
 /* This segment tree will be used to store the array index of a number in a leaf node 
 whose tree index corresponds to that number. */
 struct node {
@@ -25,10 +24,10 @@ struct node {
 			maximum = 0; // initialize to 0
 		}
 	}
-	//this function updates the tree with the given value at the given index
+	// this function updates the tree with the given value at the given index
 	void update(long value, long index) {
 		if (index < left || index > right) {
-	        return; //when the given index is outside the range of the current subtree
+	        return; // when the given index is outside the range of the current subtree
 	    }
 	    if (left == right) {
 	        maximum = value;
@@ -41,12 +40,12 @@ struct node {
 	    	maximum = max(left_child->maximum, right_child->maximum);
 		}
 	}
-    //this function returns the sum of all of the elements's occurences in the range [left, right]
-	int max_in_range(long left, long right) {
+    // this function returns the sum of all of the elements's occurences in the range [left, right]
+	long max_in_range(long left, long right) {
 	    if (left > this->right || right < this->left) {
-	        return 0; //when the given range is outside the range of the current subtree
+	        return 0; // when the given range is outside the range of the current subtree
 	    } else if (left <= this->left && right >= this->right) {
-	        return maximum; //when the range of the current subtree is inside the given range
+	        return maximum; // when the range of the current subtree is inside the given range
 	    } else {
 	        return max(left_child->max_in_range(left, right), right_child->max_in_range(left, right));
 	    }
@@ -66,7 +65,7 @@ int main() {
     sort(array.begin(), array.end());
     node root(0, n - 1, nullptr);
     for (long i = 0; i < n; i++) {
-        // find the index of tree that corresponds to the current number
+        // find the index in the tree that corresponds to the current number
         long tree_index = lower_bound(array.begin(), array.end(), input[i].first) - array.begin();
         // update the tree with the array index of the current number
         root.update(input[i].second, tree_index); 
