@@ -101,18 +101,18 @@ int main() {
 	cout << endl;
 	vector<long>::iterator it = unique(array.begin(), array.end());
 	array.erase(it, array.end());
-	node root(0, array.size() - 1, nullptr);
+	node root(0, n - 1, nullptr);
 	for (long i = 0; i < k; i++) {
 		long index = lower_bound(array.begin(), array.end(), x[i]) - array.begin();
 		root.add(index);
 	}
-	cout << array[root.kth_smallest(0, array.size() - 1, (k + 1) / 2)] << " ";
+	cout << array[root.kth_smallest(0, n - 1, (k + 1) / 2)] << " ";
 	for (long i = k; i < n; i++) {
 		long index1 = lower_bound(array.begin(), array.end(), x[i]) - array.begin();
 		root.add(index1);
 		long index2 = lower_bound(array.begin(), array.end(), x[i - k]) - array.begin();
 		root.del(index2);
-		cout << array[root.kth_smallest(0, array.size() - 1, (k + 1) / 2)] << " ";
+		cout << array[root.kth_smallest(0, n - 1, (k + 1) / 2)] << " ";
 	}
 	return 0;
 }
