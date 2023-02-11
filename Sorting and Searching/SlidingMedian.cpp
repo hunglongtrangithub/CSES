@@ -23,7 +23,8 @@ struct node {
 			freq = 0; // initialize to 0
 		}
 	}
-	// this function adds the frequency of the given index in the tree by 1
+	/* this function adds the frequency of the given index in the tree by 1 
+	by adding 1 to the freq of all of the nodes in the path from the leaf node to the root node */
 	void add(long index) {
 		if (index < left || index > right) {
 	        return; // when the given index is outside the range of the current subtree
@@ -38,7 +39,8 @@ struct node {
 			}
 		}
 	}
-	// this function deletes the frequency of the given index in the tree by 1
+	/* this function deletes the frequency of the given index in the tree by 1 
+	by subtracting 1 from the freq of all of the nodes in the path from the leaf node to the root node */
 	void del(long index) {
 		if (index < left || index > right) {
 	        return; // when the given index is outside the range of the current subtree
@@ -98,7 +100,6 @@ int main() {
 	/* map the numbers in the array to the indices in the tree
 	by keeping only the unique elements in the array vector and arrange them in ascending order */
 	sort(array.begin(), array.end());
-	cout << endl;
 	vector<long>::iterator it = unique(array.begin(), array.end());
 	array.erase(it, array.end());
 	node root(0, n - 1, nullptr);

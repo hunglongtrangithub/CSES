@@ -54,6 +54,7 @@ int main() {
 	for (long i = 0; i < n; i++) {
 		cin >> x[i];
 	}
+	//the first median
 	/* the add() function only works when the left half has at least one element 
 	(to make left_half.rbegin() exists), so we insert first element to the left half */
 	left_half.insert(x[0]); 
@@ -61,8 +62,9 @@ int main() {
 		add(x[i]);
 	}
 	cout << *left_half.rbegin() << " "; // first median
-	/* In case k = 1, right_half is empty, so we can't use right_half.begin(). 
+	/* In case k = 1, right_half is empty, so we can't use right_half.begin() in the remove() function. 
 	So we make a special case for k = 1 by printing x[i]. */
+	// the rest of medians
 	for (long i = k; i < n; i++) {
 		if (k == 1) { 
 			cout << x[i] << " ";
