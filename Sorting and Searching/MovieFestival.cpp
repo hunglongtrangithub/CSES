@@ -6,18 +6,18 @@ using namespace std;
 int main() {
     long n;
     cin >> n;
-    set<pair<long, long>> s;
+    multiset<pair<long, long>> movie_time;
     for (long i = 0; i < n; i++) {
-        long a, b;
-        cin >> a >> b;
-        s.insert({b, a}); // sort by end time
+        long start, end;
+        cin >> start >> end;
+        movie_time.insert({end, start}); // sort by end time
     }
     // we want to choose the movie that has the earliest ending time to have the most options for the next
-    long endTime = 0, count = 0;
-    for (pair<long, long> time : s) {
-        if (time.second >= endTime) {
+    long end_time = 0, count = 0;
+    for (pair<long, long> time : movie_time) {
+        if (time.second >= end_time) { 
             count++;
-            endTime = time.first;
+            end_time = time.first; 
         }
     }
     cout << count;
