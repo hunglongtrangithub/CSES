@@ -6,7 +6,7 @@ int main() {
 	long n, k;
 	cin >> n >> k;
 	vector<long> x(n);
-	long max_element = INT32_MIN; // the maximum element in the array
+	long max_element = INT64_MIN; // the maximum element in the array
 	for (long i = 0; i < n; i++) {
 	    cin >> x[i];
 		max_element = max(max_element, x[i]);

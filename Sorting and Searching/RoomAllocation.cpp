@@ -17,7 +17,7 @@ int main() {
         days[i] = {{a, b}, i};
     }
     sort(days.begin(), days.end());
-    set<pair<long, long>> right_bound{{INT32_MAX, 0}}; //keeping the departure day and room number for each current room
+    set<pair<long, long>> right_bound{{INT64_MAX, 0}}; //keeping the departure day and room number for each current room
     for (pair<pair<long, long>, long> i : days) {
         if (i.first.first <= right_bound.begin()->first) {
             max_room_num++;

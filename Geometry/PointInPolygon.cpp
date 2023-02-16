@@ -1,15 +1,14 @@
 #include <iostream>
 #include <vector>
-#define ll long long
 using namespace std;
 
 struct point {
-    ll x, y;
+    long x, y;
 };
 
 int orientation(point p1, point p2, point p3) { 
     // cross product of vectors (1)(2) and (2)(3)
-    ll val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
+    long val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
     if (val == 0) {
         return 0; // colinear
     }
@@ -30,7 +29,7 @@ the number of times the ray intersects with the edges of the polygon.
 If the number of intersections is odd, the point is inside the polygon. 
 If the number of intersections is even, the point is outside the polygon. 
 */
-string InsidePolygon(vector<point> P, int N, point p) {
+string insidePolygon(vector<point> P, int N, point p) {
     int counter = 0;
     for (int i = 0; i < N; i++) {
         point p1 = P[i];
@@ -39,7 +38,7 @@ string InsidePolygon(vector<point> P, int N, point p) {
         if (onSegment(p1, p, p2)) {
             return "BOUNDARY";
         }
-        /* This is when onSegment(p1, p, p2) == false. 
+        /* This is where onSegment(p1, p, p2) == false. 
         If p1.y == p2.y != p.y, ignore and move on the next segment. If p1.y == p2.y == p.y, then either 
         (1) p.x > min(p1.x, p2.x) or (2) p.x < max(p1.x, p2.x). If (1), ignore and move on. If (2), we also 
         ignore because the segment does not contribute to the count. Thus, we only consider when p1.y != p2.y. */
@@ -58,15 +57,15 @@ string InsidePolygon(vector<point> P, int N, point p) {
 }
 
 int main() {
-    ll n, m;
+    long n, m;
     cin >> n >> m;
-    vector<point> polygonPoints(n);
+    vector<point> polygon_points(n);
     for (int i = 0; i < n; i++) {
-        cin >> polygonPoints[i].x >> polygonPoints[i].y;
+        cin >> polygon_points[i].x >> polygon_points[i].y;
     }
     for (int i = 0; i < m; i++) {
         point p;
         cin >> p.x >> p.y;
-        cout << InsidePolygon(polygonPoints, n, p) << endl;
+        cout << insidePolygon(polygon_points, n, p) << endl;
     }
 }

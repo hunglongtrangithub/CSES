@@ -18,11 +18,11 @@ int main() {
     long x = 0, y = 0, ans = 0;
     // x = index of the applicant, y = index of the apartment
     while (x < n && y < m) {
-        if (b[y] > a[x] + k) {
+        if (b[y] > a[x] + k) { // if the apartment is too big, move to the next applicant
             x++;
-        } else if (b[y] < a[x] - k) {
+        } else if (b[y] < a[x] - k) { // if the apartment is too small, move to the next apartment
             y++;
-        } else {
+        } else { // if the apartment is suitable, move to the next applicant and apartment
             ans++;
             x++;
             y++;

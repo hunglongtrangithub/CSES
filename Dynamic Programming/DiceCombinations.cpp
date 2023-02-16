@@ -1,29 +1,29 @@
 #include <iostream>
 #include <vector>
-#define ll long long
 using namespace std;
  
-ll dice_combination(int n, vector<ll> &memo) {
+// recursive solution with memoization
+long dice_combination(long n, vector<long> &memo) {
     if (n == 0) {
         return 1;
     }
     if (n < 0) {
         return 0;
     }
-	if (memo[n - 1] != 0) {
-        return memo[n - 1];
+	if (memo[n] != 0) {
+        return memo[n];
     }
-    ll ans = 0;
-    for (int i = 1; i <= 6; i++) {
-        ans += dice_combination(n - i, memo) % int(1e9 + 7);
+    long ans = 0;
+    for (long i = 1; i <= 6; i++) {
+        ans += dice_combination(n - i, memo) % long(1e9 + 7);
     }
-	memo[n - 1] = ans % int(1e9+7);
-    return memo[n - 1];
+	memo[n] = ans % long(1e9 + 7); // save the result to avoid recomputation
+    return memo[n];
 }
 int main() {
-    int n;
+    long n;
     cin >> n;
-	vector<ll> memo(1e6, 0);
+	vector<long> memo(long(1e6 + 1), 0);
     cout << dice_combination(n, memo);
     return 0;
 }

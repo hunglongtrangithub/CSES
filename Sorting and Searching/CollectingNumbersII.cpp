@@ -16,8 +16,8 @@ int main() {
     long n, m, x;
     cin >> n >> m;
     vector<long> v1(n + 2), v2(n + 2); // v1: index -> value, v2: value -> index
-    v1[0] = v2[0] = INT32_MAX;
-    v1[n + 1] = v2[n + 1] = INT32_MAX;
+    v1[0] = v2[0] = INT64_MAX;
+    v1[n + 1] = v2[n + 1] = INT64_MAX;
     for (long i = 1; i <= n; i++) {
         cin >> x;
         v1[i] = x;

@@ -4,12 +4,12 @@
 using namespace std;
  
 int main() {
-    long long n, a, b;
+    long n, a, b;
     cin >> n >> a >> b;
-    vector<long long> prefix_sums(n + 1);
+    vector<long> prefix_sums(n + 1);
     prefix_sums[0] = 0;
-    for (long long i = 0; i < n; i++) {
-        long long x;
+    for (long i = 0; i < n; i++) {
+        long x;
         cin >> x;
         prefix_sums[i + 1] = prefix_sums[i] + x;
     }
@@ -21,12 +21,12 @@ int main() {
     all prefix_sums[j] in S_i or s_i and find the maximum with the rbegin() function. We can then iterate through all 
     possible i and find the maximum subarray sum in S. This will be done in O(nlogn) time.
     */
-    long long max_sum = INT64_MIN;
-    multiset<long long> s; 
-    for (long long i = a; i <= b; i++) {
+    long max_sum = -2 * long(1e14) + 1;
+    multiset<long> s; 
+    for (long i = a; i <= b; i++) {
         s.insert(prefix_sums[i]);
     }
-    for (long long i = 0; i <= n - a; i++) {
+    for (long i = 0; i <= n - a; i++) {
         // Find the maximum subarray sum in S_i or s_i and update max_sum with that value minus prefix_sums[i].
         max_sum = max(max_sum, *s.rbegin() - prefix_sums[i]); 
         // Update the multiset by removing the prefix_sums[i + a] and adding the prefix_sums[i + b + 1] if it exists.

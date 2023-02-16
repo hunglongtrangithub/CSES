@@ -14,7 +14,7 @@ int main() {
     current index j and find their maximum sum (local_max). local_max is the maximum sum of a subarray ending at the current 
     index j ([i, j] where i is from 0 to j). For each j, we have a local_max. global_max is the maximum sum of a subarray in the 
     entire array. We update global_max by comparing it to local_max at each j. */
-    long local_max = -1, global_max = INT32_MIN;
+    long local_max = -1, global_max = INT64_MIN;
     for (long num : arr) {
         local_max = max(num, num + local_max);
         global_max = max(local_max, global_max); 

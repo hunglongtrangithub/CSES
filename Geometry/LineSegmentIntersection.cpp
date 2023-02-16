@@ -1,14 +1,13 @@
 #include <iostream>
-#define ll long long
 using namespace std;
 
 struct point {
-    ll x, y;
+    long x, y;
 };
 
 int orientation(point p1, point p2, point p3) { 
     // cross product of vectors (1)(2) and (2)(3)
-    ll val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
+    long val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
     if (val == 0) {
         return 0; // colinear
     }
@@ -24,7 +23,7 @@ bool onSegment(point p1, point p2, point p3) {
 }
 
 int main() {
-    ll t;
+    long t;
     cin >> t;
     while (t--) {
         point p1, p2, p3, p4;
@@ -35,7 +34,7 @@ int main() {
             || (p2.x == p3.x && p2.y == p3.y) 
             || (p2.x == p4.x && p2.y == p4.y)) { 
             cout << "YES" << endl;
-        // check if all 4 points are colinear
+        // check if along 4 points are colinear
         } else if (orientation(p1, p3, p2) == 0 &&orientation(p1, p4, p2) == 0) { 
             // check if any end point of a segment lies on the other segment
             if (onSegment(p1, p3, p2) || onSegment(p1, p4, p2) || onSegment(p3, p1, p4) || onSegment(p3, p2, p4)) { 

@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-long min_diff = INT32_MAX, n;
+long min_diff = INT64_MAX, n;
 vector<long> apples;
 long total_apple_weight;
 
