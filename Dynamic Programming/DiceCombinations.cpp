@@ -2,28 +2,20 @@
 #include <vector>
 using namespace std;
  
-// recursive solution with memoization
-long dice_combination(long n, vector<long> &memo) {
-    if (n == 0) {
-        return 1;
-    }
-    if (n < 0) {
-        return 0;
-    }
-	if (memo[n] != 0) {
-        return memo[n];
-    }
-    long ans = 0;
-    for (long i = 1; i <= 6; i++) {
-        ans += dice_combination(n - i, memo) % long(1e9 + 7);
-    }
-	memo[n] = ans % long(1e9 + 7); // save the result to avoid recomputation
-    return memo[n];
-}
 int main() {
     long n;
     cin >> n;
-	vector<long> memo(long(1e6 + 1), 0);
-    cout << dice_combination(n, memo);
+    vector<long> dp(n + 1, 0); // dp[i] = number of ways to get sum i
+    dp[0] = 1;
+    // dp[i] = sum of dp[i - j] for j = 1 to 6 (or from 1 to i if i < 6)
+    for (long i = 1; i <= n; i++) {
+        for (long j = 1; j <= 6; j++) {
+            if (i - j >= 0) { // ignore if i - j is negative 
+                dp[i] += dp[i - j];
+                dp[i] %= long(1e9 + 7);
+            }
+        }
+    }
+    cout << dp[n] << endl;
     return 0;
 }

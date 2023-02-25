@@ -21,8 +21,7 @@ int main() {
     can satisfy the condition, after which all other larger numbers will also satisfy the condition. 
     We can apply binary search on the range [left, right] to find the smallest number that can satisfy the condition. 
     Because there exists an optimal division where the largest subarray sum is minimized, the number we have found through
-    binary search is the minimum largest subarray sum, which is the answer.
-    */
+    binary search is the minimum largest subarray sum, which is the answer. */
 	while (left < right) {
         long mid = (left + right) / 2; // the number we are checking
         long count = 1; // the number of subarrays we need to split the array into
