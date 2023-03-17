@@ -23,4 +23,5 @@ int main() {
         }
     }
     cout << (dp[x] == INT64_MAX ? -1 : dp[x]);
+    return 0;
 }

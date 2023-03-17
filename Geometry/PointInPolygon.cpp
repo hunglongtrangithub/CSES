@@ -68,4 +68,5 @@ int main() {
         cin >> p.x >> p.y;
         cout << insidePolygon(polygon_points, n, p) << endl;
     }
+    return 0;
 }

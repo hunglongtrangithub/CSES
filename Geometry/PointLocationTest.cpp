@@ -23,4 +23,5 @@ int main() {
             cout << "RIGHT" << endl;
         }
     }
+    return 0;
 }

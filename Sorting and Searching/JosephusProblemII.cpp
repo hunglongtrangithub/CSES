@@ -61,7 +61,7 @@ int main() {
 		}
 	}
 	for (long i : results) {
-		cout << i << " ";
+		cout << i << ' ';
 	}
 	return 0;
 }

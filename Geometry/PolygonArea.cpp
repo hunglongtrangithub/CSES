@@ -15,5 +15,6 @@ int main() {
         A += (x[i + 1] - x[0]) * (y[i + 2] - y[0]) - (x[i + 2] - x[0]) * (y[i + 1] - y[0]);
     }
     long ans = (A > 0) ? A : -A;
-    cout << ans << endl;
+    cout << ans;
+    return 0;
 }

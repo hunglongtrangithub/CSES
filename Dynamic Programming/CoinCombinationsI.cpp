@@ -23,6 +23,6 @@ int main() {
             }
         }
     }
-    cout << dp[x] << endl;
+    cout << dp[x];
     return 0;
 }
