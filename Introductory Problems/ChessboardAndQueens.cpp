@@ -8,7 +8,7 @@ bool diag2[15]; // represents the diagonals from top right to bottom left, x - y
 bool reserves[8][8]; // the chessboard 
 
 // backtracking 
-void search(long y = 0) {
+void search(long y=0) {
     if (y == 8) {
         number_of_ways++;
     } else {    

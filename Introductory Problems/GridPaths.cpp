@@ -2,7 +2,7 @@
 using namespace std;
  
 string s;
-bool vis[7][7];
+bool vis[7][7]; // mark visited cells
 long ans;
  
 bool legit(long x, long y) {

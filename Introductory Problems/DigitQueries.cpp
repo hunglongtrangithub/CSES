@@ -4,7 +4,6 @@
 #include <utility>
 using namespace std;
 
-string digit;
 vector<pair<long, long>> pivot(19, {1, 1}); // pivot[i] = (sum of digits in numbers with i digits, 10^i)
 
 int main() {
@@ -25,6 +24,8 @@ int main() {
         }
         k = k - pivot[i - 1].first + 1;
         long num = pivot[i - 1].second + k / i;
+        // find the digit
+        string digit;
         if (k % i) {
             digit = to_string(num)[k % i - 1];
         } else {

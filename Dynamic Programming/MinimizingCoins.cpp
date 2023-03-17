@@ -9,7 +9,7 @@ int main() {
     for (long i = 0; i < n; i++) {
         cin >> coins[i];
     }
-    vector<long> dp(x + 1, INT64_MAX); // dp[i] = minimum number of coins to get sum i, long64_MAX if not possible
+    vector<long> dp(x + 1, INT64_MAX); // dp[i] = minimum number of coins to get sum i, INT64_MAX if not possible
     dp[0] = 0;
     // dp[i] = (min of dp[i - coins[j]] for j = 1 to n) + 1
     for (long i = 1; i <= x; i++) {

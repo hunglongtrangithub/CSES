@@ -13,8 +13,8 @@ int main() {
         tasks[i] = {a, d};
     }
     /* reward = sum(d - f) = sum(d) - sum(f). We see that sum(d) is a constant, 
-    so maximize reward we need to minimize sum(f). Moreovew, sum(f) = (n*a_1 + (n-1)a_2 + ... + a_n), 
-    so a_1, a_2, ..., a_n must be values that follows an increasing order. So we just need to sort the tasks 
+    so to maximize reward we need to minimize sum(f). Moreovew, sum(f) = (n*a_1 + (n-1)a_2 + ... + a_n), 
+    so a_1, a_2, ..., a_n must follow an increasing order. So we just need to sort the tasks 
     by the duration of the tasks and add up the reward in that order. */
     sort(tasks.begin(), tasks.end());
     long finish_time = 0, reward = 0;
