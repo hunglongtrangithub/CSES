@@ -14,9 +14,9 @@ void search(long y=0) {
     } else {    
         for (long x = 0; x < 8; x++) {
             if (reserves[y][x] && col[x] == 0 && diag1[x + y] == 0 && diag2[x - y + 7] == 0) {
-                col[x] = diag1[x + y] = diag2[x - y + 7] = 1;
+                col[x] = diag1[x + y] = diag2[x - y + 7] = 1; // mark the column, diagonal1, and diagonal2 as occupied
                 search(y + 1);
-                col[x] = diag1[x + y] = diag2[x - y + 7] = 0;
+                col[x] = diag1[x + y] = diag2[x - y + 7] = 0; // unmark the column, diagonal1, and diagonal2
                 // 0 <= x - y + 7 <= 14 for all x and y in the range 0 <= x, y <= 7
             }
         }

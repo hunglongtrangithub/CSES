@@ -8,7 +8,7 @@ int main() {
         cout << "NO";
     } else {
         cout << "YES" << endl;
-        long k = (1 + sqrt(1 + 2 * (n * (n + 1)))) / 2; // k is the number of elements in the first set
+        long k = (1 + sqrt(1 + 2 * (n * (n + 1)))) / 2; 
         long s = n * (n + 1) / 4 - (k + 1 + n) * (n - k) / 2; // (1 <= s <= k)
         // the first set consists of s and consecutive numbers from k + 1 to n 
         cout << n - k + 1 << endl;

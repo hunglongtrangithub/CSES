@@ -8,7 +8,8 @@ int main() {
         long y, x;
         cin >> y >> x;
         long k = max(x, y);
-        long pivot = k * k - k + 1;
+        // pivot is the number at the bottom right corner of the square with side length k
+        long pivot = k * k - k + 1; // derived from pivot(k + 1) = pivot(k) + 2k (pivot(1) = 1)
         if (k % 2 == 0) {
             cout << pivot - x + y << endl;
         } else {

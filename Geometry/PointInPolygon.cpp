@@ -23,7 +23,8 @@ bool onSegment(point p1, point p2, point p3) {
     return false;
 }
 
-/* Ray casting algorithm: 
+/* 
+Ray casting algorithm: 
 Cast a horizontal "ray" from the point in question to the right, and count 
 the number of times the ray intersects with the edges of the polygon. 
 If the number of intersections is odd, the point is inside the polygon. 
@@ -38,10 +39,12 @@ string insidePolygon(vector<point> P, int N, point p) {
         if (onSegment(p1, p, p2)) {
             return "BOUNDARY";
         }
-        /* This is where onSegment(p1, p, p2) == false. 
+        /* 
+        This is where onSegment(p1, p, p2) == false. 
         If p1.y == p2.y != p.y, ignore and move on the next segment. If p1.y == p2.y == p.y, then either 
         (1) p.x > min(p1.x, p2.x) or (2) p.x < max(p1.x, p2.x). If (1), ignore and move on. If (2), we also 
-        ignore because the segment does not contribute to the count. Thus, we only consider when p1.y != p2.y. */
+        ignore because the segment does not contribute to the count. Thus, we only consider when p1.y != p2.y. 
+        */
         if (p1.y <= p.y && p.y < p2.y && orientation(p1, p, p2) < 0) {
             counter++;
         }

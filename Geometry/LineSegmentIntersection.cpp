@@ -44,8 +44,10 @@ int main() {
             }
         } else if (orientation(p1, p3, p2) != orientation(p1, p4, p2) 
             && orientation(p3, p1, p4) != orientation(p3, p2, p4)) {
-            /* the two segments intersect only when (1) and (2) are on opposite sides of the line made by (3) and (4) 
-            and (3) and (4) are on opposite sides of the line made by (1) and (2) */
+            /* 
+            the two segments intersect only when (1) and (2) are on opposite sides of the line made by (3) and (4) 
+            and (3) and (4) are on opposite sides of the line made by (1) and (2) 
+            */
             cout << "YES" << endl;
         } else {
             cout << "NO" << endl;

@@ -9,6 +9,7 @@ int main() {
         cin >> num;
         sum += num;
     }
+    // the missing number is the sum of all numbers from 1 to n minus the sum of the n - 1 numbers given
     cout << n * (n + 1) / 2 - sum;
     return 0;
 }
