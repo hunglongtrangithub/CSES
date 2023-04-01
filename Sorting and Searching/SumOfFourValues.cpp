@@ -13,6 +13,11 @@ int main() {
         a[i].second = i + 1;
     }
     sort(a.begin(), a.end());
+    /*
+    Loop through all possible pairs of indices (i, j) where i < j < n.
+    For each pair, we want to find the indices (k, l) where k > j and l < n such that
+    a[k].first + a[l].first = x - a[i].first - a[j].first. We can use binary search to find the indices k and l.
+    */
     for (long k = 0; k < n; k++) {
         for (long i = k + 1; i < n; i++) {
             long target = x - a[i].first - a[k].first;

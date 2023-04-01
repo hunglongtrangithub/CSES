@@ -25,9 +25,11 @@ struct node {
 		}
 	}
 
-	/* this function "deletes" index'th element (0-INDEXED) in the subtree 
+	/* 
+	this function "deletes" index'th element (0-INDEXED) in the subtree 
 	by deleting 1 from the count of all nodes in the path
-	and returns the value of the found element */
+	and returns the value of the found element 
+	*/
 	void del(long index) {
 		if (count < index) {
 			return; // when the index is out of range

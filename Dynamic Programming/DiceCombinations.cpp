@@ -7,7 +7,8 @@ int main() {
     cin >> n;
     vector<long> dp(n + 1, 0); // dp[i] = number of ways to get sum i
     dp[0] = 1;
-    // dp[i] = sum of dp[i - j] for j = 1 to 6 (or from 1 to i if i < 6)
+    /* dp[i] = sum of dp[i - j] for j = 1 to 6 (or from 1 to i if i < 6). 
+    The number of ways to get sum i is the sum of the number of ways to get sum i - j for j = 1 to 6. */
     for (long i = 1; i <= n; i++) {
         for (long j = 1; j <= 6; j++) {
             if (i - j >= 0) { // ignore if i - j is negative 

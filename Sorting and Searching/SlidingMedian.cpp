@@ -4,8 +4,10 @@
 using namespace std;
 
 // make a segment tree whose nodes store the total frequency of the elements in the subtree
-/* This segment tree will be used to store the frequency of a number in a leaf node 
-whose tree index corresponds to that number.*/
+/* 
+This segment tree will be used to store the frequency of a number in a leaf node 
+whose tree index corresponds to that number.
+*/
 struct node {
 	// left child manages data from left to midpoint
 	// right child manages data from midpoint + 1 to right
@@ -23,8 +25,10 @@ struct node {
 			freq = 0; // initialize to 0
 		}
 	}
-	/* this function adds the frequency of the given index in the tree by 1 
-	by adding 1 to the freq of all of the nodes in the path from the leaf node to the root node */
+	/* 
+	this function adds the frequency of the given index in the tree by 1 
+	by adding 1 to the freq of all of the nodes in the path from the leaf node to the root node 
+	*/
 	void add(long index) {
 		if (index < left || index > right) {
 	        return; // when the given index is outside the range of the current subtree
@@ -39,8 +43,10 @@ struct node {
 			}
 		}
 	}
-	/* this function deletes the frequency of the given index in the tree by 1 
-	by subtracting 1 from the freq of all of the nodes in the path from the leaf node to the root node */
+	/* 
+	this function deletes the frequency of the given index in the tree by 1 
+	by subtracting 1 from the freq of all of the nodes in the path from the leaf node to the root node 
+	*/
 	void del(long index) {
 		if (index < left || index > right) {
 	        return; // when the given index is outside the range of the current subtree
@@ -72,8 +78,10 @@ struct node {
 	// this function returns the kth smallest element in the index range [left, right]
 	long kth_smallest(long left, long right, long k) {
 	    if (left > this->right || right < this->left || k > this->freq) {
-			/* when the given range is outside the range of the current subtree 
-			or k is greater than the total frequency of the elements in the range */
+			/* 
+			when the given range is outside the range of the current subtree 
+			or k is greater than the total frequency of the elements in the range 
+			*/
 	        return 0; 
 	    } else if (this->left == this->right) {
 	        return this->left; // when the range of the current subtree is a single element
@@ -97,8 +105,10 @@ int main() {
 		cin >> x[i];
 		array[i] = x[i];
 	}
-	/* map the numbers in the array to the indices in the tree
-	by keeping only the unique elements in the array vector and arrange them in ascending order */
+	/* 
+	map the numbers in the array to the indices in the tree
+	by keeping only the unique elements in the array vector and arrange them in ascending order 
+	*/
 	sort(array.begin(), array.end());
 	vector<long>::iterator it = unique(array.begin(), array.end());
 	array.erase(it, array.end());

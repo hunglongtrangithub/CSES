@@ -5,8 +5,10 @@
 using namespace std;
  
 // make a segment tree whose nodes store the total frequency of the elements in the subtree
-/* This segment tree will be used to store the frequency of a right bound in a leaf node 
-whose tree index corresponds to that right bound.*/
+/* 
+This segment tree will be used to store the frequency of a right bound in a leaf node 
+whose tree index corresponds to that right bound.
+*/
 struct node {
 	// left child manages data from left to midpoint
 	// right child manages data from midpoint + 1 to right
@@ -71,8 +73,10 @@ int main() {
 		right_bound[i] = right;
 	}
 	sort(ranges.begin(), ranges.end(), compare);
-	/* map the right bounds to the indices in the tree
-	by keeping only the unique elements in the right_bound vector and arrange them in ascending order */
+	/* 
+	map the right bounds to the indices in the tree
+	by keeping only the unique elements in the right_bound vector and arrange them in ascending order 
+	*/
 	sort(right_bound.begin(), right_bound.end());
 	vector<long>::iterator it = unique(right_bound.begin(), right_bound.end());
 	right_bound.erase(it, right_bound.end());

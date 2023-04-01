@@ -5,8 +5,10 @@
 using namespace std;
 
 // make a segment tree that contain the maximum value of the numbers in the subtree
-/* This segment tree will be used to store the array index of a number in a leaf node 
-whose tree index corresponds to that number. */
+/* 
+This segment tree will be used to store the array index of a number in a leaf node 
+whose tree index corresponds to that number. 
+*/
 struct node {
 	// left child manages data from left to midpoint
 	// right child manages data from midpoint + 1 to right

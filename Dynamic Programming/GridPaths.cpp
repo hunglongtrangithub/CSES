@@ -24,7 +24,10 @@ int main() {
     } else {
         dp[0][0] = 1;
     }
-    // dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+    /* dp[i][j] = dp[i - 1][j] + dp[i][j - 1].
+    The number of paths to reach (i, j) is the sum of the number of paths to reach (i - 1, j) and (i, j - 1).
+    (because we can only move down or right). 
+    */
     for (long i = 0; i < n; i++) {
         for (long j = 0; j < n; j++) {
             if (trap[i][j]) {

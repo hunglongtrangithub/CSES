@@ -13,6 +13,11 @@ int main() {
         a[i].second = i;
     }
     sort(a.begin(), a.end());
+    /*
+    Loop through all possible index i < n.
+    For each index i, we want to find the indices (left, right) where left > i and right < n such that
+    a[left].first + a[right].first = x - a[i].first. We can use binary search to find the indices left and right.
+    */
     for (long i = 0; i < n; i++) {
         long target = x - a[i].first;
         long left = i + 1;

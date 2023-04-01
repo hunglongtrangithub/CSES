@@ -27,8 +27,10 @@ int main() {
 	}
 	// assign that value to the last element of the output array
 	output[n - 1] = max; 
-	/* we remove the traffic lights from the set in the reverse order compared to the input
-	and update the largest distance between two consecutive traffic lights to the output array */
+	/* 
+	We remove the traffic lights from the set in the reverse order compared to the input
+	and update the largest distance between two consecutive traffic lights to the output array 
+	*/
 	for (long i = n - 1; i > 0; i--) {
 		lights.erase(input[i]);
 		set<long>::iterator it = lights.upper_bound(input[i]);

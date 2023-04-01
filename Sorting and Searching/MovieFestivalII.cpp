@@ -17,10 +17,12 @@ int main() {
     for (long i = 0; i < k; i++) {
         end_time.insert(0); // initialize all members' end time to 0
     }
-    /* We want to sort the movies by end time, so that after a member have watched a movie, 
+    /* 
+    We want to sort the movies by end time, so that after a member have watched a movie, 
     there will be the most choices for the next movie. For a movie, we want to find the member
     who can watch the movie with the latest end time, so that the other members who have earlier
-    end times can choose to watch the movies with earlier start times. */
+    end times can choose to watch the movies with earlier start times. 
+    */
     for (pair<long, long> movie : movie_time) {
         // find the first member whose end time exceeds the start time of the movie
         auto member = end_time.upper_bound(movie.second); 

@@ -6,8 +6,11 @@ void f(long k, long start, long middle, long end) {
     if (k == 1) {
         cout << start << " " << end << endl;
     } else {
+        // Move k - 1 disks from start to middle.
         f(k - 1, start, end, middle);
+        // Move the last disk from start to end.
         f(1, start, middle, end);
+        // Move k - 1 disks from middle to end.
         f(k - 1, middle, start, end);
     }
 }

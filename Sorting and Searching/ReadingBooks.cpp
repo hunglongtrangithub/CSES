@@ -15,7 +15,8 @@ int main() {
     for (long i = 0; i < n; i++) {
         sum += t[i];
     }
-    /* Sort the reading time in ascending order. No matter how we arrange the reading time of the books, the total time 
+    /* 
+    Sort the reading time in ascending order. No matter how we arrange the reading time of the books, the total time 
     cannot be less than the sum of the reading time of along the books. In the case that t[n - 1] < sum / 2, we have the 
     following configuration of the reading schedule for Kotivalo and Justiina, where no one has to wait for another:
     1. Kotivalo: t[0], t[1], ..., t[n - 2], t[n - 1]

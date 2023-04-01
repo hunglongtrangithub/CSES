@@ -6,9 +6,11 @@ using namespace std;
 // We will use two multiset to store an bunch of numbers:
 multiset<long> right_half; // contains the upper half of the elements
 multiset<long> left_half; // contains the lower half of the elements  
-/* The left half always has the same or one more element than the right half 
+/* 
+The left half always has the same or one more element than the right half 
 (right_half.size() <= left_half.size() && left_half.size() <= right_half.size() + 1), 
-so the median is the largest element in the left half. */
+so the median is the largest element in the left half. 
+*/
 
 void add(long value) { // insert value into sets 
 	// if value is greater than the largest element in the left half, it belongs to the right half
@@ -55,15 +57,19 @@ int main() {
 		cin >> x[i];
 	}
 	//the first median
-	/* the add() function only works when the left half has at least one element 
-	(to make left_half.rbegin() exists), so we insert first element to the left half */
+	/* 
+	the add() function only works when the left half has at least one element 
+	(to make left_half.rbegin() exists), so we insert first element to the left half 
+	*/
 	left_half.insert(x[0]); 
 	for (long i = 1; i < k; i++) { // insert first k - 1 elements
 		add(x[i]);
 	}
 	cout << *left_half.rbegin() << " "; // first median
-	/* In case k = 1, right_half is empty, so we can't use right_half.begin() in the remove() function. 
-	So we make a special case for k = 1 by printing x[i]. */
+	/* 
+	In case k = 1, right_half is empty, so we can't use right_half.begin() in the remove() function. 
+	So we make a special case for k = 1 by printing x[i]. 
+	*/
 	// the rest of medians
 	for (long i = k; i < n; i++) {
 		if (k == 1) { 

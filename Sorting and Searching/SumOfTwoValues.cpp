@@ -13,6 +13,7 @@ int main() {
 		a[i].second = i + 1;
 	}
 	sort(a.begin(), a.end());
+	// Do binary search on the array a to find the indices (left, right) such that a[left].first + a[right].first = x.
 	long left = 0;
 	long right = n - 1;
 	while (left < right) {

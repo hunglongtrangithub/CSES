@@ -13,7 +13,8 @@ int main() {
         cin >> x;
         prefix_sums[i + 1] = prefix_sums[i] + x;
     }
-    /* We organize the collection S of all possible subarrays into groups of subarrays that start at the same index and 
+    /* 
+    We organize the collection S of all possible subarrays into groups of subarrays that start at the same index and 
     have the lengths vary from a to b. To be precise, S = {S_i | 0 <= i <= n - b} + {s_i | n - b + 1 <= i <= n - a}, where 
     S_i = {prefix_sums[j] - prefix_sums[i] | i + a <= j <= i + b}, s_i = {prefix_sums[j] - prefix_sums[i] | i + a <= j <= n}.
     For a certain index i, prefix_sums[i] is constant for all subarrays in S_i or s_i, so we can find the maximum subarray
