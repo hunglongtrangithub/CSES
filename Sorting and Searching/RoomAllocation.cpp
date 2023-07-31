@@ -8,8 +8,8 @@ using namespace std;
 int main() {
     long n;
     cin >> n;
-    vector<pair<pair<long, long>, long>> days(n); //keeping the arrival and departure day for each guest
-    vector<long> rooms(n); //keeping the room number for each guest
+    vector<pair<pair<long, long>, long>> days(n); // keeping the arrival and departure day for each guest, along with the index of the guest
+    vector<long> rooms(n); // keeping the room number for each guest
     long max_room_num = 0;
     for (long i = 0; i < n; i++) {
         long a, b;
@@ -17,7 +17,7 @@ int main() {
         days[i] = {{a, b}, i};
     }
     sort(days.begin(), days.end());
-    set<pair<long, long>> right_bound{{INT64_MAX, 0}}; //keeping the departure day and room number for each current room
+    set<pair<long, long>> right_bound{{INT64_MAX, 0}}; // keeping the departure day and room number for each current room
     for (pair<pair<long, long>, long> i : days) {
         if (i.first.first <= right_bound.begin()->first) {
             max_room_num++;

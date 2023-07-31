@@ -1,10 +1,11 @@
 #include <iostream>
+#include <vector>
 using namespace std;
  
 string s;
-bool vis[7][7]; // mark visited cells
+vector<vector<bool>> vis(7, vector<bool>(7, false)); // marks the visited squares
 long ans;
- 
+// checks if the square is within the grid and is not visited
 bool legit(long x, long y) {
     return 0 <= x && x < 7 && 0 <= y && y < 7 && !vis[x][y];
 }

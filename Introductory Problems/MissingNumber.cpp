@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     long n, sum = 0;
     cin >> n;
-    for (int i = 1; i < n; i++) {
+    for (long i = 1; i < n; i++) {
         long num;
         cin >> num;
         sum += num;

@@ -67,7 +67,7 @@ int main() {
 	cin >> n;
 	vector<pair<pair<long, long>, long>> ranges(n); 
     vector<long> contains(n), contained(n), right_bound(n); // right_bound keeps the right bounds of the ranges
-	for (int i = 0; i < n; i++) {
+	for (long i = 0; i < n; i++) {
 		cin >> left >> right;
 		ranges[i] = {{left, right}, i};
 		right_bound[i] = right;

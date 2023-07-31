@@ -11,9 +11,11 @@ int main() {
     }
     vector<long> dp(x + 1, INT64_MAX); // dp[i] = minimum number of coins to get sum i, INT64_MAX if not possible
     dp[0] = 0;
-    /* dp[i] = (min of dp[i - coins[j]] for j = 1 to n) + 1.
+    /* 
     The minimum number of coins to get sum i is the minimum of the minimum number of coins to get 
-    sum i - coins[j] for j = 1 to n, plus 1. */
+    sum i - coins[j] for j = 1 to n, plus 1:
+    dp[i] = (min of dp[i - coins[j]] for j = 1 to n) + 1.
+    */
     for (long i = 1; i <= x; i++) {
         for (long j = 0; j < n; j++) {
             if (i - coins[j] >= 0) {

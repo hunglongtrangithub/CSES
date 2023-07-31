@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
  
-int check(vector<long> &v, int c, int d) {
+long check(vector<long> &v, long c, long d) {
     if (c - d == 1) {
         return (v[c - 2] > v[c - 1]) + (v[c - 1] > v[c]) + (v[c] > v[c + 1]);
     }

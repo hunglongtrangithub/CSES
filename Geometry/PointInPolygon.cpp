@@ -6,7 +6,7 @@ struct point {
     long x, y;
 };
 
-int orientation(point p1, point p2, point p3) { 
+long orientation(point p1, point p2, point p3) { 
     // cross product of vectors (1)(2) and (2)(3)
     long val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
     if (val == 0) {
@@ -31,8 +31,8 @@ If the number of intersections is odd, the point is inside the polygon.
 If the number of intersections is even, the point is outside the polygon. 
 */
 string insidePolygon(vector<point> P, int N, point p) {
-    int counter = 0;
-    for (int i = 0; i < N; i++) {
+    long counter = 0;
+    for (long i = 0; i < N; i++) {
         point p1 = P[i];
         point p2 = P[(i + 1) % N];
         // first check if p lies on the line segment made by p1 and p2
@@ -63,10 +63,10 @@ int main() {
     long n, m;
     cin >> n >> m;
     vector<point> polygon_points(n);
-    for (int i = 0; i < n; i++) {
+    for (long i = 0; i < n; i++) {
         cin >> polygon_points[i].x >> polygon_points[i].y;
     }
-    for (int i = 0; i < m; i++) {
+    for (long i = 0; i < m; i++) {
         point p;
         cin >> p.x >> p.y;
         cout << insidePolygon(polygon_points, n, p) << endl;

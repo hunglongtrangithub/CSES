@@ -1,11 +1,12 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 long number_of_ways = 0;
-bool col[8]; // represents the columns, x = constant (0 <= constant <= 7)
-bool diag1[15]; // represents the diagonals from top left to bottom right, x + y = constant (0 <= x + y <= 14)
-bool diag2[15]; // represents the diagonals from top right to bottom left, x - y = constant (-7 <= x - y <= 7)
-bool reserves[8][8]; // the chessboard 
+vector<bool> col(8, false); // represents the columns, x = constant (0 <= constant <= 7). false = unoccupied, true = occupied
+vector<bool> diag1(15, false); // represents the diagonals from top left to bottom right, where x + y = constant (0 <= x + y <= 14). false = unoccupied, true = occupied
+vector<bool> diag2(15, false); // represents the diagonals from top right to bottom left, where x - y + 7 = constant (0 <= x - y + 7 <= 14). false = unoccupied, true = occupied
+vector<vector<bool>> reserves(8, vector<bool>(8)); // the chessboard 
 
 // backtracking 
 void search(long y=0) {
@@ -13,11 +14,10 @@ void search(long y=0) {
         number_of_ways++;
     } else {    
         for (long x = 0; x < 8; x++) {
-            if (reserves[y][x] && col[x] == 0 && diag1[x + y] == 0 && diag2[x - y + 7] == 0) {
-                col[x] = diag1[x + y] = diag2[x - y + 7] = 1; // mark the column, diagonal1, and diagonal2 as occupied
+            if (reserves[y][x] && !col[x] && !diag1[x + y] && !diag2[x - y + 7]) {
+                col[x] = diag1[x + y] = diag2[x - y + 7] = true; // mark the column, diagonal1, and diagonal2 as occupied
                 search(y + 1);
-                col[x] = diag1[x + y] = diag2[x - y + 7] = 0; // unmark the column, diagonal1, and diagonal2
-                // 0 <= x - y + 7 <= 14 for all x and y in the range 0 <= x, y <= 7
+                col[x] = diag1[x + y] = diag2[x - y + 7] = false; // unmark the column, diagonal1, and diagonal2
             }
         }
     }
@@ -28,7 +28,7 @@ int main() {
         for (long x = 0; x < 8; x++) {
             char input;
             cin >> input;
-            reserves[y][x] = (input == '*') ? 0 : 1;
+            reserves[y][x] = (input == '*') ? false : true;
         }
     }
     search();

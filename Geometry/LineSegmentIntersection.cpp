@@ -5,7 +5,7 @@ struct point {
     long x, y;
 };
 
-int orientation(point p1, point p2, point p3) { 
+long orientation(point p1, point p2, point p3) { 
     // cross product of vectors (1)(2) and (2)(3)
     long val = (p2.x - p1.x) * (p3.y - p2.y) - (p2.y - p1.y) * (p3.x - p2.x); 
     if (val == 0) {

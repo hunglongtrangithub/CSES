@@ -1,15 +1,17 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 int main() {
     string s;
     cin >> s;
-    long ch[26] = {0}, count = 0; // ch[i] is the number of characters that are i + 'A'
+    vector<long> ch(26, 0); // ch[i] is the number of characters that are i + 'A'
     // Count the number of each character
     for (char c : s) {
         ch[c - 'A'] += 1;
     }
+    long count = 0;
     // Count the number of characters that appear an odd number of times
     for (long i = 0; i < 26; i++) {
         count += ch[i] % 2;

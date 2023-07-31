@@ -7,7 +7,7 @@ int main() {
     long n;
     cin >> n;
     vector<long> v(n); // the height of each tower
-    for (int i = 0; i < n; i++) {
+    for (long i = 0; i < n; i++) {
         cin >> v[i];
     }
     multiset<long> check;
